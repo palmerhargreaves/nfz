@@ -1,0 +1,4 @@
+all:
+  javascripts: [ activity/checks, jquery.tablednd.0.8.min.js, activity/reorder, activity/info ]
+indexSuccess:
+  javascripts: [ activity/tasks_acceptor, activity/tasks_orders ]

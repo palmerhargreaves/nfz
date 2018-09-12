@@ -1,0 +1,26 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           MaterialCategory
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          material_category
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        orders: { label: Порядок }
+      list:    
+        title: Категории материалов
+        display: [ _name ]
+      filter:  
+        display: [ name ]
+      form:    ~
+      edit:    ~
+      new:     ~

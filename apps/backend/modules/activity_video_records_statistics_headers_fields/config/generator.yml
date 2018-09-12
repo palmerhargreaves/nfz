@@ -1,0 +1,38 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityFields
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_video_records_statistics_headers_fields
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        description: { label: Описание }
+        field_type: { label: Тип поля }
+        group_id: { label: Группа }
+        parent_header_id: { label: Заголовок }
+        required: { label: Обязательное }
+        req: { label: Обязательное }
+        content: { label: Содержимое поля }
+        status: { label: Статус }
+      list:
+        title: Список полей
+        display: [ id, name, allow_user_to_add ]
+        max_per_page: 25
+        actions: {}
+      filter:
+       class: false
+      form:    ~
+      edit:    
+        title: Параметры "%%name%%"
+      new:     
+        title: Новое поле

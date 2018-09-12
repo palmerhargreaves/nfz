@@ -1,0 +1,91 @@
+body.anonymous #content {
+    position: relative;
+    width: 960px;
+    height: 990px;
+    margin: 0 auto;
+    background: #eff3f5 url('../images/anonymous-bg.jpg') no-repeat top center;
+    border: 1px solid #cfd7d9;
+    border-top-color: #cfd7d9;
+    box-shadow: inset 0px 5px 9px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Auth window */
+
+#auth-modal {
+    padding-bottom: 61px;
+}
+
+#auth-modal .modal-input-wrapper.password input {
+    background-image: url('../images/key.png');
+}
+
+#auth-modal .modal-input-wrapper.email input {
+    background-image: url('../images/envelope.png');
+}
+
+#auth-modal .remember-wrapper {
+    height: 30px;
+}
+
+#auth-modal .remember-wrapper .remember {
+    color: #2c2d2e;
+    font-weight: bold;
+    float: left;
+    position: relative;
+    top: 2px;
+}
+
+#auth-modal .remember-wrapper .recovery {
+    float: right;
+}
+
+#auth-modal #recovery-pass-link {
+    position: relative;
+    top: 2px;
+}
+
+#auth-modal .remember-wrapper .remember span {
+    padding-left: 6px;
+}
+
+
+#auth-modal .register-link {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    margin-left: -65px;
+    width: 130px;
+    height: 42px;
+    background: #f0f0f0;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    line-height: 42px;
+}
+
+#auth-modal .modal-button-wrapper {
+    height: 42px;
+}
+
+#auth-modal .modal-button-wrapper .form-loader {
+    position: relative;
+    top: 11px;
+}
+
+/* Registration window */
+
+#registration-modal .agree-wrapper span {
+    padding-left: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#registration-modal .dealer .modal-select-wrapper {
+    margin-top: 10px;
+}
+
+/* Recovery window */
+
+#recovery-modal .reg-email {
+    width: 288px;
+    margin: auto;
+}

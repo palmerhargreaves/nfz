@@ -1,0 +1,1 @@
+<?php include_partial('fields_table_list', array('fields' => $fields, 'isCalcField' => false));

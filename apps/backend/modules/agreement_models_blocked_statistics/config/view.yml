@@ -1,0 +1,2 @@
+all:
+  javascripts: [ dialogs/agreement_model_blocked_info_dialog ]

@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityFields
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_fields
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название поля }
+        description: { label: Описание }
+        type: { label: Тип поля }
+        content: { label: Содержимое поля }
+        req: { label: Обязательное }
+        status: { label: Статус }
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:    
+        title: Поле "%%name%%"
+      new:     
+        title: Новое поле
+
+

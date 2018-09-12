@@ -1,0 +1,294 @@
+div.budget {
+    position: relative;
+    width: 714px;
+    float: left;
+}
+
+.budget .quarter-tabs {
+    margin-top: 9px;
+    z-index: 10;
+}
+
+.budget .quarter-tabs .tab {
+    float: left;
+    width: 170px;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+}
+
+.budget .quarter-tabs .tab-header {
+    position: relative;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 4px 11px 2px;
+    border-bottom: 1px solid #ffffff;
+    background: #eaeeed;
+    background: linear-gradient(180deg, #eaeeed 0%,#becfd9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeeed', endColorstr='#becfd9',GradientType=0 );
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.budget .quarter-tabs .tab-header .required-activities {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+}
+
+.budget .quarter-tabs .tab-header .required-activities img {
+    padding-left: 2px;
+}
+
+.budget .quarter-tabs .active .tab-header {
+    background: #a8cae2;
+}
+
+.budget .quarter-tabs .tab-header  span {
+    font-size: 17px;
+}
+
+.budget .quarter-tabs .tab-body {
+    background: #eaeeed;
+    font-size: 13px;
+    padding: 8px 10px 6px;
+    line-height: 17px;
+}
+
+.budget .quarter-tabs .tab-body span{
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.budget .quarter-tabs .active .tab-body {
+    background: #cfd7d9;
+}
+
+.budget .quarter-tabs .tab-shadow {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 1);
+    height: 1px;
+    position: absolute;
+    left: 2px;
+    bottom: -1px;
+    z-index: 10;
+    width: 165px;
+}
+
+.budget .quarter-tabs .tab:hover .tab-shadow {
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 1);
+}
+
+.budget .quarter-tabs .active .tab-shadow {
+    display: none;
+}
+
+.budget .quarter-pane {
+    background: #cfd7d9;
+    z-index: 20;
+    position: absolute;
+    width: 704px;
+    top: 104px;
+    left: 0px;
+}
+
+.budget .timeline-wrapper {
+    position: relative;
+    height: 76px;
+    border-bottom: 2px solid #ffffff;
+}
+
+.budget .clock {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background: url('../images/clock-icon.png') 0px 0px no-repeat;
+    top: 17px;
+    left: 20px;
+}
+
+.budget .timeline-wrapper .line {
+    width: 612px;
+    height: 9px;
+    background: url('../images/line1.png') 0px 0px no-repeat;
+    position: absolute;
+    top: 23px;
+    left: 73px;
+}
+
+.budget .timeline-wrapper .line .wrapper {
+    position: relative;
+    margin-left: 9px;
+}
+
+.budget .timeline-wrapper .line .caret {
+    background: #f00 url('../images/timeline-caret.png') 0px 0px no-repeat;
+    width: 9px;
+    height: 11px;
+    position: absolute;
+    top: 7px;
+    left: 98%;
+}
+
+.budget .labels {
+    position: absolute;
+    width: 612px;
+    height: 20px;
+    top: 38px;
+    left: 75px;
+    font-weight: bold;
+}
+
+.budget .label {
+    float: left;
+    width: 33%;
+    margin-right: 2px;
+    text-align: center;
+}
+
+.budget .label.last {
+    text-align: right;
+}
+
+.budget .label.last span {
+    font-size: 15px;
+}
+
+.budget .progressbar-wrapper {
+    position: relative;
+    height: 76px;
+    font-weight: bold;
+}
+
+.budget .sum {
+    width: 42px;
+    height: 42px;
+    background: url('../images/sum-icon.png') 0px 0px no-repeat;
+    top: 17px;
+    left: 20px;
+    position: absolute;
+}
+
+.budget .progressbar {
+    width: 609px;
+    height: 15px;
+    position: absolute;
+    top: 19px;
+    left: 75px;
+}
+
+.budget .blue {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/progressbar-bg-blue-grad.png') 0px 50% repeat-x;
+    width: 0%;
+    height: 15px;
+    border-radius: 4px;
+}
+.budget .blue img { display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.budget .green {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/progressbar-bg-green.png') 0px 0px repeat-x;
+    width: 100%;
+    height: 15px;
+    border-radius: 4px;
+} 
+
+.budget .white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/progressbar-bg-white.png') 0px 0px repeat-x;
+    width: 100%;
+    height: 15px;
+    border-radius: 4px;
+} 
+
+.budget .done {
+    position: absolute;
+    top: 43px;
+    left: 74px;
+}
+
+.budget .overdraft {
+    position: absolute;
+    top: 43px;
+    right: 21px;
+}
+
+.budget .done span, .budget  .overdraft  span {
+    font-size: 15px;
+}
+
+.year-summary {
+    float: left;
+}	
+
+.year-summary .diagram-wrapper {
+    background: #efefef;
+    position: relative;
+    height: 225px;
+    width: 225px;
+    margin-top: 25px;
+    padding-top: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#flash-diagram {
+    width: 148px;
+    height: 148px;
+    margin: 16px auto 10px;
+}
+
+/* nfz overrides */
+
+.budget-wrapper { position: relative; padding-top: 1em; }
+div.budget { position: relative; width: 100%; }
+.budget .quarter-tabs { float: none; margin: 0; width: auto; border: 1px solid #d1d1d1; border-bottom: 4px solid #5eacdd; }
+.budget .quarter-tabs:after { display: block; clear: both; height: 0; content: '.'; overflow: hidden; }
+.budget .quarter-tabs .tab { margin: 0; width: 25%; border-left: 1px solid #d1d1d1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.budget .quarter-tabs .tab:first-child { border: 0; }
+.budget .quarter-tabs .tab-header { font-weight: 700; font-size: 19px; padding: 5px 14px 0; border: 0; background: none; filter: none; border-radius: 0; }
+.budget .quarter-tabs .tab-header .required-activities { top: 5px; right: 14px; }
+.budget .quarter-tabs .tab-header .required-activities img { float: left; margin-left: 2px; }
+.budget .quarter-tabs .tab-header  span { font-size: 19px; }
+.budget .quarter-tabs .tab-body { background: none; font-size: 14px; padding: 2px 14px 8px; line-height: 1.16; }
+.budget .quarter-tabs .tab-body span { font-size: 14px; letter-spacing: 1px; }
+.budget .quarter-tabs .active { background: #5eacdd; color: #fff; }
+.budget .quarter-tabs .active .tab-header { background: none; }
+.budget .quarter-tabs .active .tab-body { background: none; }
+.budget .quarter-tabs .tab-shadow { display: none; }
+
+.budget .quarter-pane { position: relative; top: 0 !important; clear: both; width: auto; background: #ecf2f4; }
+
+.budget .timeline-wrapper { height: 104px; border-bottom: 1px solid #dee3e4; }
+.budget .clock { top: 50%; left: 14px; margin-top: -42px; width: 83px; height: 83px; }
+.budget .timeline-wrapper .line { width: 575px; height: 12px; background-image: url('../images/line1-1.png'); top: 50%; left: 109px; margin-top: -6px; }
+.budget .timeline-wrapper .line .wrapper { margin: 0 6px; }
+.budget .timeline-wrapper .line .caret { background-image: url('../images/timeline-caret-1.png'); width: 17px; height: 9px; top: 12px; }
+.budget .labels { width: 587px; height: auto; top: 50%; left: 103px; margin-top: -28px; font-weight: 400; font-size: 14px; }
+.budget .label { width: 33.33%; margin-right: 0; }
+
+.budget .progressbar-wrapper { width: 684px; height: 120px; font-weight: bold; }
+.budget .sum { top: 15px; left: 14px; width: 83px; height: 83px; }
+.budget .progressbar { width: 575px; height: 19px; top: 30px; left: 109px; }
+.budget .white { height: 19px; } 
+.budget .blue { background-image: url('../images/progressbar-bg-grad.png'); height: 19px; }
+.budget .green { background-image: url('../images/progressbar-bg-grad.png'); height: 19px; } 
+.budget .done, .budget .overdraft { position: relative; top: 0; left: 0; float: right; margin: 70px 0 0 30px; font-weight: 400; font-size: 14px; }
+.budget .done span, .budget .overdraft  span { font-weight: 700; font-size: 14px; }
+
+.year-summary { position: absolute; z-index: 25; bottom: 20px; right: 0; font-size: 14px; }	
+.year-summary .diagram-wrapper { background: none; position: relative; height: auto; width: 225px; margin-top: 0; padding-top: 0; font-weight: 400; text-align: center; }
+#flash-diagram { display: block; margin: 5px auto !important; }
+.year-summary .diagram-wrapper span { font-weight: 700; }

@@ -1,0 +1,1 @@
+<?php echo $material->getEditorLink() ? 'Да' : 'Нет'; ?> 

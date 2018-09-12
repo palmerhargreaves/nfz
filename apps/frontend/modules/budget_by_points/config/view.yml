@@ -1,0 +1,2 @@
+all:
+  stylesheets: [budget_by_points]

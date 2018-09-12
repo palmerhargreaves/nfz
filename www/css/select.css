@@ -1,0 +1,101 @@
+.select {
+    position: relative;
+    height: 23px;
+    padding: 8px 0 0 14px;
+    color: #2c2d2e;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #ced7d9;
+    border-radius: 3px;
+    
+}
+
+.select:hover {
+    background: #f0f0f0;
+}
+
+.select.open {
+    background: #fefefe;
+    border-radius: 3px 3px 0 0;
+}
+
+.select.inactive {
+    background: linear-gradient(180deg,  #fefefe 0%,#e7e9ea 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e7e9ea',GradientType=0 ); /* IE6-9 */
+}
+
+.select.inactive:hover { 
+    background-position: 0 0px;
+}
+
+.select .modal-select-dropdown {
+    display: none;
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    top: 100%;
+    z-index: 1000;
+    min-height: 10px;
+    max-height: 247px;
+    /*height: auto;*/
+    overflow: auto;
+    border: solid #ced7d9;
+    border-width: 1px 0;
+    /*border-bottom: 0px;*/
+}
+
+.select.open .modal-select-dropdown {
+    /*display: block;*/
+}
+
+.select .modal-select-dropdown-item {
+    height: 22px;
+    padding: 8px 0 0 14px;
+    border: solid #ced7d9;
+    border-width: 0 1px 1px;
+    background: #ffffff;
+}
+
+.select .modal-select-dropdown-item:hover {
+    background: #f3f7f8;
+}
+
+.select .modal-select-dropdown-item:active {
+    background: #f3f7f8;
+}
+
+.select .ico {
+    position: absolute;
+    top: 50%;
+    margin-top: -6px;
+    right: 10px;
+    width: 7px;
+    height: 12px;
+    background: url('../images/dropdown-ico.png');
+}
+
+.select.open .ico {
+    background-position: 0 -12px;
+}
+
+.select-filter {
+  display: none;
+}
+
+.select-filter input {
+  width: 90%;
+  border: none;
+  background: transparent;
+}
+
+.select-filter input:focus {
+  outline: 0;
+}
+
+/* nfz overrides */
+
+.select { padding-top: 10px; padding-right: 30px; min-width: 107px; height: 24px; }
+.select .ico { top: 0; right: 0; margin: 0; width: 25px; height: 100%; background: #f2f2f2 url(../images/bg_select.png) 50% no-repeat; }
+.select.open .ico { background-position: 50%; }
+.section-header-tbl .select { margin-left: 15px; }

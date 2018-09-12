@@ -1,0 +1,64 @@
+<?php
+
+require_once dirname(__FILE__).'/../lib/activityGeneratorConfiguration.class.php';
+require_once dirname(__FILE__).'/../lib/activityGeneratorHelper.class.php';
+
+/**
+ * activity actions.
+ *
+ * @package    Servicepool2.0
+ * @subpackage activity
+ * @author     Your name here
+ * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */
+class activityActions extends autoActivityActions
+{
+  protected $action;
+  
+  public function preExecute()
+  {
+    $this->dispatcher->connect('admin.save_object', array($this, 'onSaveObject'));
+    $this->dispatcher->connect('admin.delete_object', array($this, 'onDeleteObject'));
+    
+    parent::preExecute();
+  }
+  
+  public function executeCreate(sfWebRequest $request)
+  {
+    $this->action = 'add';
+    
+    parent::executeCreate($request);
+  }
+  
+  public function executeUpdate(sfWebRequest $request)
+  {
+    $this->action = 'edit';
+    
+    parent::executeUpdate($request);
+  }
+  
+  protected function addToLog($action, $object)
+  {
+    $description = '';
+    if($action == 'add')
+      $description = 'Добавлена';
+    elseif($action == 'edit')
+      $description = 'Изменена';
+    elseif($action == 'delete')
+      $description = 'Удалена';
+    
+    $entry = LogEntryTable::getInstance()->addEntry($this->getUser()->getAuthUser(), 'activity', $action, $object->getName(), $description, '', null, $object->getId());
+    $entry->setImportance(true);
+    $entry->save();
+  }
+  
+  public function onSaveObject(sfEvent $event)
+  {
+    $this->addToLog($this->action, $event['object']);
+  }
+  
+  public function onDeleteObject(sfEvent $event)
+  {
+    $this->addToLog('delete', $event['object']);
+  }
+}

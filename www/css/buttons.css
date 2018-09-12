@@ -1,0 +1,99 @@
+.button {
+    position: relative;
+    width: 315px;
+    height: 42px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 42px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background: #7ab7d1;
+    border: none;
+}
+
+button.button {
+    line-height: normal;
+    padding-bottom: 1px;
+}
+
+.button:hover {
+    background: #8cd1ef;
+}
+
+.button:active {
+    background: #84dce4;
+}
+
+.button a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.button.small {
+    width: auto;
+    height: auto;
+    font-family: futura;
+    box-shadow: 0px 2px 3px 0px rgba(187, 187, 187, 1);
+    cursor: pointer;
+    border: 1px solid #f4f4f4;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: normal;
+    color: #33434c;
+    background: #ffffff;
+    text-shadow: none;
+    padding: 2px 12px;
+    line-height: 15px;
+}
+
+.button.small:hover {
+    box-shadow: 0px 2px 3px 1px rgba(187, 187, 187, 1);
+}
+
+.button.small:active {
+    position: relative;
+    top: 1px;
+    box-shadow: 0px 1px 3px 0px rgba(187, 187, 187, 1);
+}
+
+.button.small a {
+    color: #33434c;
+    font-weight: normal;
+}
+
+.button.small.back {
+    padding-left: 22px;
+    background: url('../images/back-button-caret.png') 9px 8px no-repeat;
+}
+
+.button.green {
+    background: #8dcc97;
+}
+
+.button.green:hover {
+    background: #a0e8ac;
+}
+
+.button.green:active {
+    background: #99efa4;
+}
+
+.button.gray {
+    background: #ededed;
+    color: #9a9ea1;
+}
+
+.button.gray a {
+    color: #9a9ea1;
+}
+
+.button.gray:hover {
+    background: #d5d5d5;
+}
+
+.button.gray:active {
+    background: #cccccc;
+}

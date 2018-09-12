@@ -1,0 +1,352 @@
+.chat .show-old-messages {
+    position: relative;
+    width: 740px;
+    height: 29px;
+}
+
+.chat .show-old-messages .links {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px 0 0 -130px;
+    padding: 0px 3px;
+    background: #ffffff;
+    width: 260px;
+    text-align: center;
+    position: absolute;
+    z-index: 300;
+    left: 50%;
+    top: 0;
+}
+
+.chat .show-old-messages .links  span {
+    color: #396fa2;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.chat .show-old-messages .line {
+    border-bottom: 1px solid #9da3a5;
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 716px;
+    margin: 0 11px;
+    height: 1px;
+}
+
+.chat .message {
+    position: relative;
+    width: 728px;
+    margin: 0 0 23px;
+}
+
+.chat .message:after {
+    display: none;
+}
+
+.chat .message:before {
+    display: none;
+}
+
+.chat .message .name {
+    color: #396fa2;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0 22px;
+    position: relative;
+}
+
+.chat .message .name .icon {
+    background: url("../images/online-icon.png") 0 0 no-repeat;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.chat .message .name.online .icon {
+    background: url("../images/online-icon.png") 0 -6px no-repeat;
+}
+
+.chat .message .time {
+    float: right;
+    background: #9da3a5;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 5px 2px;
+    margin: 4px 0 8px;
+    border-radius: 2px;
+}
+
+.chat .message .time span {
+    padding-left: 5px;
+}
+
+.chat .message .body {
+    clear: both;
+    background: #c6d5e1;
+    font-size: 13px;
+    margin: 0px 0 0 10px;
+    border-radius: 5px;
+    padding: 10px 12px 10px;
+    position: relative;
+    line-height: 17px;
+}
+
+.chat .message.answer .body {
+    background: #d6d9da;
+}
+
+.chat .message .body .corner {
+    background: url("../images/message-body-icon.png") 0 0 no-repeat;
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    top: -7px;
+    left: 13px;
+}
+
+.chat .message.answer .body .corner {
+    background: url("../images/message-body-icon.png") 0 -7px no-repeat;
+}
+
+
+.chat .message.answer .body .attachments {
+    background: url("../images/clip-icon.png") 0 12px no-repeat;
+    padding: 7px 25px 0;
+}
+
+.chat .message.answer .body .attachments a {
+    padding-right: 10px;
+}
+
+.chat .message-send-wrapper {
+    min-height: 100px;
+    margin: 10px -9px 0px;
+    padding-top: 6px;
+    background: #efefef;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.chat .message-send-wrapper .textarea-wrapper {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    width: 589px;
+    height: 82px;
+    margin: 10px 15px 0 20px;
+    border-radius: 4px;
+    box-shadow: inset 0px 3px 4px -2px rgba(50, 50, 50, 0.75);
+    float: left;
+}
+
+.chat .message-send-wrapper .textarea-wrapper textarea{
+    width: 575px;
+    height: 71px;
+    margin: 5px 5px;
+    resize: none;
+    border: 0;
+    outline: none;
+}
+
+.chat .message-button-wrapper {
+    float: left;
+    margin-top: 10px;
+
+}
+
+.chat .message-button-wrapper .message-button {
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 40px;
+    outline: none;
+    background: #7ab7d1;
+    border: none;
+    border-radius: 4px;
+}
+
+.chat .message-button-wrapper .message-button:hover {
+    background: #8cd1ef;
+}
+
+.chat .message-button-wrapper .message-button:active {
+    background: #84dce4;
+}
+
+.chat .message-upload-wrapper {
+    padding: 10px 19px;
+    clear: both;
+}
+
+.chat .message-upload-wrapper .message-upload-button {
+    width: 34px;
+    height: 34px;
+    border: 1px solid #c2c2c2;
+    border-radius: 7px;
+    background: #f7f7f7;
+    #background: linear-gradient(180deg,  #f7f7f7 0%,#d2d2d2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#d2d2d2',GradientType=0 );
+    cursor: pointer;
+    float: left;
+
+    background: url(/images/bgd_upload.png) 50% no-repeat;
+    background-size: 30px;
+}
+
+.chat .message-upload-wrapper .message-upload-button img {
+    margin: 7px 0 0 7px;
+}
+
+.chat .message-upload-wrapper .message-upload-item {
+    float: left;
+    margin: 11px 0 0 17px;
+    padding: 0px 10px;
+    position: relative;
+}
+
+.chat .message-upload-wrapper .message-upload-item .name {
+    font-size: 12px;
+}
+
+.chat .message-upload-wrapper .message-upload-item .delete {
+    background: url("../images/delete-icon.png") 0 0px no-repeat;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    right: -5px;
+    top: 3px;
+    cursor: pointer;
+}
+
+.chat .scroller {
+    position: relative;
+    height: 336px;
+    margin-top: 14px;
+    width: 740px;
+}
+
+.chat .scroller .scrollbar {
+    background: url("../images/track.png") 0 0 no-repeat;
+    background-position: 0 0; 
+    height: 336px;
+    width: 7px;
+    position: relative; 
+    float: right;
+    margin-right: -10px;
+    cursor: pointer;
+}
+
+.chat .scroller .scrollbar .track {
+    background: url("../images/track.png") 0 0 no-repeat;
+    height: 336px;
+    width: 7px;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+}
+
+.chat .scroller .scrollbar .thumb {
+    background: url("../images/handle.png") 0 0 no-repeat;
+    width: 7px;
+    height: 41px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.chat .scroller-wrapper {
+    height: 336px;
+    width: 740px;
+    position: relative;
+    overflow: hidden;
+}
+
+.chat .scroller-inner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.chat .scroller-wrapper .select-item {
+    height: 23px;
+    cursor: pointer;
+}
+
+.chat .message-upload-button .swfupload {
+    
+}
+
+.discussion-special-panel-error {
+    border : 1px solid red !important;
+    height : 140px !important;
+    margin : 0px !important;
+    width : 590px !important;
+}
+
+
+/* nfz overrides */
+.chat .scroller, .chat .scroller-wrapper { width: auto; }
+.chat .scroller-inner { right: 0; }
+.chat .message { width: auto; }
+.model.modal .chat .scroller { margin: 0 !important; }
+.chat .scroller-wrapper { margin-right: 10px; }
+
+#discussion-pane .ask-q { padding-top: 2em; }
+
+.chat .message .name {
+    font-weight: 400;
+	margin-bottom: 1em;
+	color: #4e4e4e;
+}
+
+.chat .message .time {
+    background: none;
+    color: #4e4e4e;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0 0 1em;
+    border-radius: 0;
+}
+
+.chat .message .time span {
+    padding-left: 0;
+}
+
+.chat .message .body {
+    clear: both;
+    background: #cfe6ec;
+    font-size: 13px;
+    margin: 0 0 2em 10%;
+    border-radius: 0;
+    padding: 1em 30px;
+    position: relative;
+    line-height: normal;
+	min-height: 35px;
+	color: #000; 
+}
+.chat .message .body .corner {display: none;}
+.chat .message .body:before { position: absolute; top: 15px; left: -20px; width: 20px; height: 21px; background: url(../images/ico_quote.png) 0 0 no-repeat; content: '.'; text-indent: -9999px; overflow: hidden; }
+
+.chat .message.answer .body {
+	margin-left: auto;
+	margin-right: 10%;
+	background: #f0f0f0; 
+}
+.chat .message.answer .body:before { left: auto; right: -20px; background-position: 100% 0; }

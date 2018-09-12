@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Faqs
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          faqs
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+          question: { label: Вопрос }
+          answer: { label: Ответ }
+          image: { label: Картинка }
+          status: { label: Статус }
+          created_at : { label : Дата создания }
+      list:    
+          title : Список вопросов / ответов
+          display: [ _id, question, answer, created_at ]
+          max_per_page: 50
+      filter: 
+          display: [ question, answer ]
+      form:    ~
+      edit:
+        title: Изменить параметры
+      new:
+        title: Новый вопрос / ответ

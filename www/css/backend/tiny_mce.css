@@ -1,0 +1,125 @@
+body {
+	position: relative;
+	width: 937px;
+	background: url('../images/content-border-top.png') 0px 0px no-repeat;
+	font-size: 13px;
+	line-height: 20px;
+	z-index: 10;
+	font-family: Arial;  
+}
+.main-column {
+	float: left;
+	padding: 0px 0px 0px 27px;
+}
+
+ .main-column-item {
+	padding-top: 0px;
+}
+
+ .main-column-item-1 {
+	padding-top: 30px;
+}
+
+.main-column .left-column {
+	background: #97c1d7;
+	width: 159px;
+	float: left;
+}
+
+.main-column .left-column>div {
+        position: relative;
+        padding: 13px 10px 10px 29px;
+        border-bottom: 1px solid #ffffff;
+}
+
+.main-column-item-1 .left-column>div {
+        height: 145px;
+}	
+
+.main-column-item-2 .left-column>div {
+        height: 85px;
+}
+
+.main-column-item-3 .left-column>div {
+        height: 57px;
+}
+
+.main-column-item-4 .left-column>div {
+        height: 167px;
+}
+
+.main-column .left-column div img {
+        position: absolute;
+        top: 12px;
+        left: -14px;
+}
+
+.main-column .left-column div .header{
+        font-family: Futura;
+        color: #ffffff;
+        font-size: 18px;
+        line-height: 23px;
+}
+
+.main-column .content-column {
+        float: left;
+        width: 491px;
+        padding: 17px 0px 10px 10px;
+        border-bottom: 1px solid #c2cacc;
+}
+
+.main-column-item-1 .content-column {
+        height: 141px;
+}
+
+.main-column-item-2 .content-column {
+        height: 81px;
+}
+
+.main-column-item-3 .content-column {
+        height: 53px;
+}
+
+.main-column-item-4 .content-column {
+        height: 162px;
+}
+
+.content-column-list-item {
+        margin-bottom: 10px;
+}
+
+.content-column-list-item .num {
+        float: left;
+        font-family: futura;
+        color: #cfd7d9;
+        font-size: 37px;
+        padding: 9px 16px 0 1px;
+}
+
+.content-column-list-item .text {
+        line-height: 18px;
+}
+
+.main-column .content-column ul.content-column-list {
+        color: #a0a7a8;
+        margin: 0;
+        padding: 0 22px;
+        line-height: 17px;
+}
+
+.main-column .content-column ul.content-column-list li {
+        margin-bottom: 8px;
+}
+
+.main-column .content-column ul.content-column-list li span {
+        color: #000000;
+}
+
+.right-column {
+        background: #efefef;
+        width: 201px;
+        float: right;
+        padding: 30px 18px 30px 12px;
+        height: 600px;
+        border-top-right-radius: 3px;
+}

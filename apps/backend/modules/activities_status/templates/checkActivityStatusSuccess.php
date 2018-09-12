@@ -1,0 +1,1 @@
+<?php include_partial('buttons', array('item' => $item));

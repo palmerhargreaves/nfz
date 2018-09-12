@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * Description of RealBudgetCalculator
+ *
+ * @author Сергей
+ */
+class RealBudgetCalculator
+{
+  /**
+   * Dealer
+   *
+   * @var Dealer
+   */
+  protected $dealer;
+  /**
+   * Year
+   *
+   * @var int
+   */
+  protected $year;
+  protected $real_budget = array();
+  protected $plan_budget = array();
+  
+  function __construct(Dealer $dealer, $year)
+  {
+    $this->dealer = $dealer;
+    $this->year = $year;
+  }
+  
+  function calculate()
+  {
+    $this->real_budget = array(1 => 0, 2 => 0, 3 => 0, 4 => 0);
+    $this->plan_budget = $this->getPlanBudget();
+    
+    $query = RealBudgetTable::getInstance()
+             ->createQuery()
+             ->where('dealer_id=? and year=?', array($this->dealer->getId(), $this->year))
+             ->orderBy('id');
+    
+    foreach($query->execute() as $real_row)
+      $this->addToRealBudget($real_row->getQuarter(), $real_row->getSum());
+    
+    return $this->real_budget;
+  }
+  
+  protected function addToRealBudget($quarter, $sum) 
+  {
+    $new_sum = $this->real_budget[$quarter] + $sum;
+
+    if($quarter < 4 && $new_sum > $this->plan_budget[$quarter])
+    {
+      $this->addToRealBudget($quarter + 1, $new_sum - $this->plan_budget[$quarter]);
+      $new_sum = $this->plan_budget[$quarter];
+    }
+    
+    $this->real_budget[$quarter] = $new_sum;
+  }
+  
+  protected function getPlanBudget()
+  {
+    $budget = array(1 => 0, 2 => 0, 3 => 0, 4 => 0);
+    
+    $query = BudgetTable::getInstance()
+            ->createQuery()
+            ->where('dealer_id=? and year=?', array($this->dealer->getId(), $this->year));
+    
+    foreach($query->execute() as $budget_row)
+      $budget[$budget_row->getQuarter()] = $budget_row->getPlan();
+    
+    return $budget;
+  }
+}

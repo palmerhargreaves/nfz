@@ -1,0 +1,427 @@
+/*Статистика e-mail адресов*/
+.dealet_stat
+{
+	width: 100%;
+	color: #2c2d2e;
+	font-weight: bold;
+    font-size: 12px;
+}
+.dealet_stat tr td 
+{
+	height: 40px;
+	text-align: center;
+}
+.dealet_stat .head
+{
+	text-align: left;
+    padding-left: 14px;
+	background-color: #EDEDED;
+}
+.dealet_stat .head_lite
+{
+	width: 188px;
+    text-align: left;
+    padding-left: 14px;
+}
+.row_dark
+{
+	background-color: #EDEDED;
+	border-left: 2px solid #D8D8D8;
+}
+.row_lite
+{
+	border-left: 2px solid #D8D8D8;
+}
+.row_quater_dark
+{
+	background-color: #DCDCDC;
+	border-left: 2px solid #D8D8D8;
+}
+
+.row_quater_lite
+{
+	background-color: #EDEDED;
+	border-left: 2px solid #D8D8D8;
+}
+.search_dealer
+{
+	font-size: 12px;
+	text-align: center;
+	width: 182px;
+	height: 23px;
+	float: left;
+	border: 1px solid #ced7d9;
+	margin-right: 10px;
+	padding-bottom: 1px;
+	padding: 4px 0 4px 14px;
+}
+.search
+{
+	width: 80%;
+	height: 100%;
+	float: left;
+	border: 0px;
+}
+.search:focus, .search_ico:focus  
+{
+	outline: none;
+	background: #FFFFFF;
+}
+
+/*Загрузка email адресов*/
+.mailing_load h1
+{
+    float: left;
+    width: 100%;
+    margin-bottom: 40px;
+	margin-top: 40px;
+}
+.mailing_load result
+{
+	float: left;
+	width: 100%;
+}
+.mailinglist
+{
+	float: left;
+	width: 100%;
+	min-height: 80px;
+	margin-bottom: 40px;
+}
+.mailinglist .pic
+{
+	display: table;
+	float: left;
+	min-height: 80px;
+	width: 56px;
+}
+.mailinglist .pic div
+{
+	display: table-cell;
+	vertical-align: middle;
+}
+.mailinglist .pic span
+{
+	position: relative; 
+	top: 30px;
+    left: -30px;	
+	font-size: 16px;
+}
+.mailinglist .mailinglist_descr
+{
+	display: table;
+	float: right;
+	width: 560px;
+	min-height: 80px;
+}
+.mailinglist_descr div
+{
+	font-weight: bold;
+}
+.mailinglist div
+{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/*диаграммы*/
+div.mailing {
+    position: relative;
+    width: 714px;
+    float: left;
+}
+
+.mailing-wrapper {
+	/*hight*/
+}
+
+.mailing .month-tabs {
+    margin-top: 9px;
+    z-index: 10;
+}
+
+.mailing .month-tabs .tab {
+    float: left;
+    width: 32.12%;
+    margin-right: 8px;
+    position: relative;
+    cursor: pointer;
+}
+
+.mailing .month-tabs .tab-header {
+    position: relative;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 4px 11px 2px;
+    border-bottom: 1px solid #ffffff;
+    background: #eaeeed;
+    background: linear-gradient(180deg, #eaeeed 0%,#becfd9 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaeeed', endColorstr='#becfd9',GradientType=0 );
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.mailing .month-tabs .tab-header .required-activities {
+    position: absolute;
+    top: 5px;
+    right: 7px;
+}
+
+.mailing .month-tabs .tab-header .required-activities img {
+    padding-left: 2px;
+}
+
+.mailing .month-tabs .active .tab-header {
+    background: #a8cae2;
+}
+
+.mailing .month-tabs .tab-header  span {
+    font-size: 17px;
+}
+
+.mailing .month-tabs .tab-body {
+    background: #eaeeed;
+    font-size: 13px;
+    padding: 8px 10px 6px;
+    line-height: 17px;
+}
+
+.mailing .month-tabs .tab-body span{
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.mailing .month-tabs .active .tab-body {
+    background: #cfd7d9;
+}
+
+.mailing .month-tabs .tab-shadow {
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 1);
+    height: 1px;
+    position: absolute;
+    left: 2px;
+    bottom: -1px;
+    z-index: 10;
+    width: 165px;
+}
+
+.mailing .month-tabs .tab:hover .tab-shadow {
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 1);
+}
+
+.mailing .month-tabs .active .tab-shadow {
+    display: none;
+}
+
+.mailing .month-pane {
+    background: #cfd7d9;
+    z-index: 20;
+    position: absolute;
+    width: 704px;
+    top: 104px;
+    left: 0px;
+}
+
+.mailing .timeline-wrapper {
+    position: relative;
+    height: 76px;
+    border-bottom: 2px solid #ffffff;
+}
+
+.mailing .clock {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background: url('../images/clock-icon.png') 0px 0px no-repeat;
+    top: 17px;
+    left: 20px;
+}
+
+.mailing .timeline-wrapper .line {
+    width: 612px;
+    height: 9px;
+    background: url('../images/line1.png') 0px 0px no-repeat;
+    position: absolute;
+    top: 23px;
+    left: 73px;
+}
+
+.mailing .timeline-wrapper .line .wrapper {
+    position: relative;
+    margin-left: 9px;
+}
+
+.mailing .timeline-wrapper .line .caret {
+    background: #f00 url('../images/timeline-caret.png') 0px 0px no-repeat;
+    width: 9px;
+    height: 11px;
+    position: absolute;
+    top: 7px;
+    left: 98%;
+}
+
+.mailing .labels {
+    position: absolute;
+    width: 612px;
+    height: 20px;
+    top: 3px;
+    left: 75px;
+    font-weight: bold;
+}
+
+.mailing .label {
+    float: left;
+    width: 33%;
+    margin-right: 2px;
+    text-align: center;
+}
+
+.mailing .label.last {
+    text-align: right;
+}
+
+.mailing .label.last span {
+    font-size: 15px;
+}
+
+.mailing .progressbar-wrapper {
+    position: relative;
+    height: 76px;
+    font-weight: bold;
+}
+
+.mailing .sum-mail {
+    width: 42px;
+    height: 42px;
+    background: url('../images/mail_icon.png') 0px 0px no-repeat;
+    top: 17px;
+    left: 20px;
+    position: absolute;
+}
+
+.mailing .sum-diag {
+    width: 42px;
+    height: 42px;
+    background: url('../images/diag-icon.png') 0px 0px no-repeat;
+    top: 17px;
+    left: 20px;
+    position: absolute;
+}
+
+.mailing .progressbar {
+    width: 609px;
+    height: 15px;
+    position: absolute;
+    top: 19px;
+    left: 75px;
+}
+
+.mailing .blue {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/progressbar-bg-blue-grad.png') 0px 50% repeat-x;
+    width: 0%;
+    height: 15px;
+    border-radius: 4px;
+}
+.mailing .blue img { display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mailing .green {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/progressbar-bg-green.png') 0px 0px repeat-x;
+    width: 100%;
+    height: 15px;
+    border-radius: 4px;
+} 
+
+.mailing .white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/progressbar-bg-white.png') 0px 0px repeat-x;
+    width: 100%;
+    height: 15px;
+    border-radius: 4px;
+} 
+
+.mailing .done {
+    position: absolute;
+    top: 43px;
+    left: 74px;
+}
+
+.mailing .overdraft {
+    position: absolute;
+    top: 43px;
+    right: 21px;
+}
+
+.mailing .done span, .mailing  .overdraft  span {
+    font-size: 15px;
+}
+
+.year-summary {
+    float: left;
+}	
+
+.year-summary .diagram-mailing-wrapper {
+    background: #efefef;
+    position: relative;
+    height: 180px;
+    width: 225px;
+    margin-top: 25px;
+    padding-top: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#flash-diagram {
+    width: 148px;
+    height: 148px;
+    margin: 16px auto 10px;
+}
+
+/* nfz overrides */
+
+.mailing-wrapper { position: relative; clear: both; }
+div.mailing { position: relative; width: auto; float: none; }
+
+.mailing .month-tabs { margin-top: 0; border-bottom: 4px solid #5eacdd; }
+.mailing .month-tabs:after { display: block; clear: both; height: 0; content: '.'; overflow: hidden; }
+.mailing .month-tabs .tab { float: left; width: 24%; margin-right: 8px; }
+.mailing .month-tabs .tab-header { font-size: 16px; padding: 10px 15px 6px; border: 1px solid #e7e7e7; border-bottom: 0; background: none; filter: none; border-radius: 3px 3px 0 0; }
+.mailing .month-tabs .tab-header .required-activities { top: 9px; right: 15px; }
+.mailing .month-tabs .active { }
+.mailing .month-tabs .active .tab-header { background: #5eacdd; border-color: #5eacdd; color: #fff; }
+.mailing .month-tabs .tab-header  span { font-size: 16px; }
+
+.mailing .month-pane { background: #ecf2f4; position: relative; width: auto; top: 0 !important; }
+
+.mailing .progressbar-wrapper { width: 665px; height: 80px; font-weight: 400; border: 0 !important; }
+.mailing .sum-mail { width: 56px; height: 56px; top: 50%; margin-top: -28px; }
+.mailing .sum-diag { width: 56px; height: 57px; top: 50%; margin-top: -28px; }
+
+.mailing .progressbar { width: 575px; height: 15px; top: 23px; left: 90px; }
+
+.mailing .blue { background-image: url('../images/progressbar-bg-grad.png'); height: 19px; }
+.mailing .green { background-image: url('../images/progressbar-bg-grad.png'); height: 19px; } 
+.mailing .white { background-image: url('../images/progressbar-bg-white.png'); height: 19px; } 
+.mailing .done { position: relative; top: 0; left: 0; margin-left: 90px; padding-top: 48px; font-size: 14px; }
+.mailing .done span { font-weight: 700; font-size: 14px; }
+.mailing .done .button-odd { padding-top: 1px; padding-bottom: 1px; }
+.mailing .labels { width: auto; height: auto; top: 48px; left: auto; right: 2px; font-weight: bold; font-size: 14px; }
+.mailing .label { width: auto; margin: 0 0 0 15px; text-align: left; }
+
+.mailing-wrapper .year-summary { position: absolute; width: 260px; height: 118px; }	
+.mailing-wrapper .year-summary .diagram-mailing-wrapper { background: none; height: auto; width: auto; margin-top: 0; padding-top: 0; font-weight: 400; text-align: left; }
+
+.upload-btn { padding: .5em 30px .5em 50px; background: #fff url(../images/bg_upload.png) 15px 50% no-repeat; border: 1px solid #d4d4d4; font-weight: 700; font-size: 12px; color: #314d54; box-shadow: 0 0 0 1px #d9d9d9; border-radius: 4px; text-decoration: none; }

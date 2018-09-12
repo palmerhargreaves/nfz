@@ -1,0 +1,35 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Dialogs
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          dialogs
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        header: { label: Заголовок }
+        description: { label: Описание }
+        width: { label: Длина }
+        left_pos: { label: Отступ слева (в %) }
+        top_pos: { label: Отступ сверху (в %) }
+        start: { label: Выводить С }
+        end: { label: Выводить До }
+        on_who_just_registered: { label: Первый вход, help: Отображается пользователям выполнившим первый вход после регистрации }
+        limit_show: { label: Ограниченный показ }
+        status: { label: Опубликовано }
+      list:   
+        title: Список информационных диалогов
+        display: [ =header, _description, =on_who_just_registered, =start, =end, _limit_show, =status ]
+      filter:  ~
+      form:    ~
+      edit:    
+        title: Параметры диалога %%header%%
+      new:     
+        title: Новый диалог

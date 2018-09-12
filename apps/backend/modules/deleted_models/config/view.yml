@@ -1,0 +1,2 @@
+all:
+  javascripts: [ activity/model_logs ]

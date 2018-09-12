@@ -1,0 +1,29 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           UserGroup
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          user_group
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        roles: { label: Роли }
+        roles_list: { label: Роли }
+      list:    
+        title: Группы пользователей
+        display: [ =name, _roles ]
+      filter:  
+        display: [ name, roles_list ]
+      form:    ~
+      edit:   
+        title: Группа %%name%%
+      new:     
+        title: Новая группа

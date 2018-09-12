@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Dealer
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          dealer
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        number: { label: Номер }
+        email: { label: E-mail }
+        phone: { label: Телефон }
+        city_id: { label: Город }
+        budget: { label: Бюджет (план) }
+      list:    
+        title: Дилеры
+        display: [ name, number, email, phone, _budget ]
+        object_actions: {}
+        batch_actions:
+         _show_all: ~
+        actions: {}
+      filter:  
+        display: [ name, number, city_id, email, phone ]
+      form:    ~
+      edit:    ~
+      new:     ~

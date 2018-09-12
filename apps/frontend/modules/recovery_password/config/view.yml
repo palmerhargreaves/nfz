@@ -1,0 +1,10 @@
+all:
+  layout: anonymous_layout  
+  has_layout: false
+  
+newPasswordSuccess:
+  has_layout: true
+
+newPasswordError:
+  has_layout: true
+  

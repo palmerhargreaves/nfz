@@ -1,0 +1,41 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           News
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          news
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        name: { label: Название }
+        announcement: { label: Анонс }
+        img_small: { label: Маленькая картинка }
+        img_big: { label: Большая картинка }
+        text: { label: Текст новости, help: Используйте [split_text] для указания позиции до которой выводить текст. Перед [split_text] обязательно нужно поставить пробел. }
+        status: { label: Опубликовать }
+        is_important: { label: Важная }
+        created_at: { label: Дата }
+      list:
+        title: Новости
+        batch_actions:
+         _delete: ~
+         copy: ~
+         _show_all: ~
+        display: [ name, announcement, _status, created_at ]
+        max_per_page: 50
+        fields: 
+          group: { credentials: [admin] }
+      filter:
+        display: [ name ]
+      form:    ~
+      edit:
+        title: Параметры новости "%%name%%"
+      new:
+        title: Новая новость

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="ru" datatype="plaintext" original="messages" date="2012-10-17T11:24:35Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Дилеры</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Номер</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Название</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>Адрес</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Телефон</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>Сайт</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>E-mail</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>Долгота</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="9">
+        <source>Широта</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Город</source>
+        <target/>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

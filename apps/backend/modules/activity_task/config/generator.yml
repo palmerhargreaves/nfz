@@ -1,0 +1,25 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityTask
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_task
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        is_concept_complete: { label: Выполнение концепции, help: Задача считается выполненной после согласования концепции }
+      list:    ~
+      filter:  ~
+      form:    ~
+      edit:   
+        title: Задача "%%name%%"
+      new:     
+        title: Новая задача

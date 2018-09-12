@@ -1,0 +1,30 @@
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+/node_modules/*
+/config/*
+/apps/frontend/config/*
+/apps/backend/config/*
+/cache/*
+/lib/dompdf/*
+/lib/PHPExcel/*
+/lib/vendor/*
+/symfony/*
+/webstat/*
+/data/*
+/Maildir/*
+/nbproject/*
+/test/*
+/www/uploads/*
+/www/webstat/*

@@ -1,0 +1,4 @@
+all:
+  stylesheets: [manager]
+  javascripts:
+    - discussion/messages_tabs.js

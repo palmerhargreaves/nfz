@@ -1,0 +1,116 @@
+<?php
+
+/**
+ * Description of RealBudgetCalculator
+ *
+ * @author Сергей
+ */
+class RealBudgetCalculator
+{
+  /**
+   * Dealer
+   *
+   * @var Dealer
+   */
+  protected $dealer;
+  /**
+   * Year
+   *
+   * @var int
+   */
+  protected $year;
+  protected $real_budget = array();
+  protected $plan_budget = array();
+
+  const LAST_QUARTER = 4;
+  const FIRST_QUARTER = 1;
+  const MIN_DAYS = 20;
+  
+  function __construct(Dealer $dealer, $year)
+  {
+    $this->dealer = $dealer;
+    $this->year = $year;
+  }
+  
+  function calculate()
+  {
+    $this->real_budget = array(1 => 0, 2 => 0, 3 => 0, 4 => 0);
+    $this->plan_budget = $this->getPlanBudget();
+    
+    /*$query = RealBudgetTable::getInstance()
+             ->createQuery()
+             ->where('dealer_id=? and year=?', array($this->dealer->getId(), $this->year))
+             ->orderBy('id');*/
+    $query = AgreementModelTable::getInstance()
+                  ->createQuery('am')
+                  ->leftJoin('am.Report r')
+                    ->where('am.dealer_id = ? and year(am.updated_at) = ? and am.status = ? and r.status = ?', array($this->dealer->getId(), $this->year, 'accepted', 'accepted'));
+    
+    foreach($query->execute() as $real_row) {
+        $nDate = D::calcQuarterData($real_row->getReport()->getAcceptDate());
+
+        $year = D::getYear($nDate);
+        $q = D::getQuarter($nDate);
+
+        if($this->year != $year)
+          continue;
+
+        if(!$real_row->getActivity()->isActivityStatisticComplete($this->dealer, $nDate))
+          continue;
+
+        $realSum = $real_row->getCost();
+        $this->addToRealBudget($q, $realSum);
+    }
+
+    $query = AgreementModelTable::getInstance()
+                  ->createQuery('am')
+                  ->leftJoin('am.Report r')
+                    ->where('am.dealer_id = ? and year(am.updated_at) = ? and quarter(am.updated_at) = ? and am.status = ? and r.status = ?', array($this->dealer->getId(), ($this->year + 1), self::FIRST_QUARTER, 'accepted', 'accepted'));
+
+    foreach($query->execute() as $real_row) {
+      $nDate = D::calcQuarterData($real_row->getReport()->getAcceptDate());
+      $q = D::getQuarter($nDate);
+
+      if(!$real_row->getActivity()->isActivityStatisticComplete($this->dealer, $nDate))
+          continue;
+
+      if(date('n', $real_row->getReport()->getAcceptDate()) == self::FIRST_QUARTER && (int)date('d', $real_row->getReport()->getAcceptDate()) <= self::MIN_DAYS && $q == self::LAST_QUARTER) {
+        
+        $realSum = $real_row->getCost();
+        $total += $realSum;
+        $this->addToRealBudget(self::LAST_QUARTER, $realSum, $real_row);
+        
+      }
+    }
+
+    return $this->real_budget;
+  }
+  
+  protected function addToRealBudget($quarter, $sum, $row = null) 
+  {
+    $new_sum = $this->real_budget[$quarter] + $sum;
+
+    if($quarter < 4 && $new_sum > $this->plan_budget[$quarter] && $this->plan_budget[$quarter] != 0)
+    {
+      $this->addToRealBudget($quarter + 1, $new_sum - $this->plan_budget[$quarter]);
+      $new_sum = $this->plan_budget[$quarter];
+     
+    }
+
+    $this->real_budget[$quarter] = $new_sum;
+  }
+  
+  protected function getPlanBudget()
+  {
+    $budget = array(1 => 0, 2 => 0, 3 => 0, 4 => 0);
+    
+    $query = BudgetTable::getInstance()
+            ->createQuery()
+            ->where('dealer_id=? and year=?', array($this->dealer->getId(), $this->year));
+    
+    foreach($query->execute() as $budget_row)
+      $budget[$budget_row->getQuarter()] = $budget_row->getPlan();
+    
+    return $budget;
+  }
+}

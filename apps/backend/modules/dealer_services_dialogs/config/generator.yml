@@ -1,0 +1,39 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           DealerServicesDialogs
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          dealer_services_dialogs
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:
+        id: { label: № }
+        header: { label: Название Акции }
+        header_dialog: { label: Заголовок в диалоге }
+        description: { label: Описание }
+        confirm_msg: { label: Описание подтверждения }
+        success_msg: { label: Текст успешного подтверждения, help: Выводится в диалоге после подтверждения участия в акции }
+        width: { label: Длина }
+        left_pos: { label: Отступ слева (в %) }
+        template: { label: Шаблон }
+        start_date: { label: Выводить С }
+        end_date: { label: Выводить До }
+        status: { label: Статус }
+        without_dates: { label: Без даты проведения акции, help: Не выводить в диалоге период проведения акции }
+        activity_id: { label: Привязка к активности }
+      list:    
+        title: Сервисные акции (Диалоги)
+        display: [ =id, =header, _description, _template, =start_date, =end_date, =status ]
+      filter:  ~
+      form:    ~
+      edit:    
+        title: Параметры диалога %%header%%
+      new:     
+        title: Новый диалог для сервисной акции

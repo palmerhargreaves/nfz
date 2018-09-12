@@ -1,0 +1,8 @@
+all:
+  layout: anonymous_layout
+
+sp1Success:
+  has_layout: false  
+sp1Error:
+  has_layout: false
+  

@@ -1,0 +1,2 @@
+all:
+  javascripts: [ activity/statictic/statistics_back, activity/statictic/statistic_concept_add ]

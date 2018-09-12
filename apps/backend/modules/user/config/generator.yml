@@ -1,0 +1,107 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           User
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          user
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        group_id: { label: Группа }
+        group: { label: Группа }
+        email: { label: E-mail }
+        name: { label: Имя }
+        surname: { label: Фамилия }
+        patronymic: { label: Отчество }
+        company_type: { label: Тип компании }
+        company_name: { label: Компания }
+        post: { label: Должность }
+        phone: { label: Номер телефона }
+        mobile: { label: Мобильный телефон }
+        created_at: { label: Дата регистрации }
+        registration_notification: { label: Уведомлять о регистрации пользователей }
+        new_agreement_notification: { label: Уведомлять о новых макетах }
+        agreement_notification: { label: Уведомлять о промежуточных согласованиях }
+        final_agreement_notification: { label: Уведомлять о финальном согласовании }
+        new_agreement_report_notification: { label: Уведомлять о новых отчётах }
+        agreement_report_notification: { label: Уведомлять о промежуточных согласованиях }
+        final_agreement_report_notification: { label: Уведомлять о финальном согласовании }
+        new_agreement_concept_notification: { label: Уведомлять о новых концепциях }
+        agreement_concept_notification: { label: Уведомлять о промежуточных согласованиях }
+        final_agreement_concept_notification: { label: Уведомлять о финальном согласовании }
+        new_agreement_concept_report_notification: { label: Уведомлять о новых концепциях }
+        agreement_concept_report_notification: { label: Уведомлять о промежуточных согласованиях }
+        final_agreement_concept_report_notification: { label: Уведомлять о финальном согласовании }
+        allow_to_get_dealers_messages: { label: Получение сообщений дилеров }
+        dealer_discussion_notification: { label: Уведомлять о вопросах дилеров }
+        model_discussion_notification: { label: Уведомлять о вопросах к макетам }
+        active: { label: Активный }
+        allow_receive_mails: { label: Получение сообщений }
+        dealers_list: { label : Доступные дилеры }
+        natural_person_id: { label: Региональный менеджер }
+        binded_dealers: { label: Привязанные дилеры }
+      list:    
+        title: Пользователи
+        display: [ =email, _group, name, surname, _binded_dealers, created_at, active ]
+        max_per_page: 50
+        fields: 
+          group: { credentials: [admin] }
+      filter:  
+        display: [ email, group_id, name, surname, phone, mobile, active ]
+      form:    
+        display:
+          Основные: 
+            - id
+            - group_id
+            - email
+            - surname
+            - name
+            - patronymic
+            - company_type
+            - company_name
+            - post
+            - phone
+            - mobile
+            - active
+          Пароль:
+            - new_password
+            - new_password_confirmation
+          Привязка по региональному менеджеру:
+            - natural_person_id
+          Ограничения по дилерам:
+            - dealers_list
+          Получение сообщений:
+            - allow_receive_mails
+            - allow_to_get_dealers_messages
+          Уведомление о регистрации:
+            - registration_notification
+          Уведомления о согласовании макетов:
+            - new_agreement_notification
+            - agreement_notification
+            - final_agreement_notification
+          Уведомления о согласовании отчётов:
+            - new_agreement_report_notification
+            - agreement_report_notification
+            - final_agreement_report_notification
+          Уведомления о согласовании концепций:
+            - new_agreement_concept_notification
+            - agreement_concept_notification
+            - final_agreement_concept_notification
+          Уведомления о согласовании отчётов концепций:
+            - new_agreement_concept_report_notification
+            - agreement_concept_report_notification
+            - final_agreement_concept_report_notification
+          Уведомления о новых сообщениях:
+            - dealer_discussion_notification
+            - model_discussion_notification
+      edit:   
+        title: Пользователь %%email%%
+      new:     
+        title: Новый пользователь

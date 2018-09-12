@@ -1,0 +1,5 @@
+activate:
+  credentials: [[ admin, importer ]]
+  
+deactivate:
+  credentials: [[ admin, importer ]]

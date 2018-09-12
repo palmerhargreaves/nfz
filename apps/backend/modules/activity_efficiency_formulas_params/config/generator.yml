@@ -1,0 +1,37 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityEfficiencyFormulaParams
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_efficiency_formulas_params
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        param1_type: { label: Тип 1 параметра }
+        param2_type: { label: Тип 2 параметра }
+        param1_value: { label: Значение 1 параметра }
+        param2_value: { label: Значение 2 параметра }
+        description: { label: Описание }
+        params_action: { label: Действие }
+        param1_allow_to_sum: { label: Разрешить суммировать значения (1) }
+        param2_allow_to_sum: { label: Разрешить суммировать значения (2) }
+      list:
+        title: Список параметров
+        display: [ id ]
+        max_per_page: 25
+        actions: {}
+      filter:
+       class: false
+      form:    ~
+      edit:    
+        title: Параметры формулы
+      new:     
+        title: Параметры формулы

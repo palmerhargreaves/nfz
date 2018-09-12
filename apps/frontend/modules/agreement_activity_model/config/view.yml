@@ -1,0 +1,5 @@
+all:
+  stylesheets: [manager]
+  javascripts: 
+    - intro/intro.activity.approvement.js
+    - utils/utils.js

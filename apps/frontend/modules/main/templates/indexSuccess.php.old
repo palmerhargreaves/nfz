@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<title>Volkswagen Service</title>
+<link rel="icon" type="image/png" href="favicon.ico" />
+<link media="screen" href="css/style.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/libs.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<div id="layout">
+		<div id="header">
+			<div class="logo">
+				<img src="images/logo_main.png" alt="Volkswagen Service">
+			</div>
+		</div>
+		<div id="main">
+			<div class="menu">
+				<div class="item">
+					<a target="_blank" href="http://vw-servicepool.ru/">
+						<img src="images/menu/1.png" alt="">
+					</a>
+				</div>
+				<div class="item">
+					<a target="_blank" href="http://dm.vw-servicepool.ru/">
+						<img src="images/menu/2.png" alt="">
+					</a>
+				</div>
+				<div class="item">
+					<a target="_blank" href="#">
+						<img src="images/menu/3.png" alt="">
+					</a>
+				</div>
+				<div class="item">
+					<a target="_blank" href="#">
+						<img src="images/menu/4.png" alt="">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="copyright">
+				&copy;<a href="#"> Volkswagen</a> |
+				<a href="#">Oieuenaaaai ?inney</a> |
+				<a href="#">I?aaiaua aniaeou</a>
+			</div>
+			<div class="company">
+				<a href="#">Volkswagen AG</a> |
+				<a href="#">Volkswagen International</a>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

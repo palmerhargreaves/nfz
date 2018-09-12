@@ -1,0 +1,396 @@
+#submenu {
+    border-bottom: 1px solid #cfd7d9;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    margin-top: -17px;
+}
+
+#submenu ul {
+    list-style: none outside;
+    margin: 0;
+    padding: 0;
+}
+
+#submenu ul li {
+    margin: 0;
+    padding: 0;
+    float: left;
+    display: inline;
+    padding-left: 10px;
+    margin-left: 9px;
+    background: url("../../images/submenu_border.png") no-repeat 0px 7px;
+}
+
+#submenu ul li:first-child {
+    padding-left: 0px;
+    margin-left: 0px;
+    background: none;
+}
+
+#submenu ul li a {
+    color: #33434c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+#submenu ul li a.active {
+    color: #2274ac;
+    padding-left: 10px;
+    display: inline-block;
+    line-height: 15px;
+    background: url("../../images/submenu_arrow.png") no-repeat 0px 5px;
+}
+
+#border {
+    padding-top: 0px;
+}
+
+#filters {
+    position: absolute;
+    top: -9px;
+    left: 140px;
+}
+
+#filters .modal-select-wrapper.type {
+    width: 130px;
+}
+
+#filters .modal-select-wrapper.dealer {
+    width: 350px;
+    margin-left: 10px;
+}
+
+
+#filters .filter {
+    float: left;
+}
+
+#filters .date-input {
+    margin-left: 10px;
+}
+
+#filters .date-input input {
+    height: 31px;
+    outline: none;
+    border: 1px solid #ced7da;
+    border-radius: 4px;
+    width: 70px;
+    text-align: center;
+}
+
+#filters .post-input {
+    margin-left: 10px;
+}
+
+#filters .post-input input {
+    height: 31px;
+    outline: none;
+    border: 1px solid #ced7da;
+    border-radius: 4px;
+    width: 140px;
+    text-align: center;
+}
+
+.approvement {
+    position: relative;
+}
+
+.approvement h1 {
+    margin-bottom: 20px;
+}
+
+#activities {
+    width: 100%;
+    text-align: left;
+    border-collapse:collapse;
+}
+
+#activities td, #activities th {
+    border-bottom: 1px solid #d6d6d6;
+    padding: 8px;
+}
+
+#activities td {
+    height: 33px;
+}
+
+#activities tr:nth-child(even) td {
+    background: #fafafa;
+}
+
+#activities th {
+    font-weight: bold;
+}
+
+#activities td.complete, #activities td.progress, #activities td.blank {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#dealer-list {
+    width: 400px;
+    margin-left: -200px;
+    display: none;
+}
+
+#materials .group-header {
+    margin-bottom: 0px;
+}
+
+#materials .group-header .ico {
+    position: relative;
+    top: 3px;
+    padding-right: 5px;
+}
+
+#materials .group-header .summary {
+    position: absolute;
+    top: 0; left: 520px;
+    font-weight: normal;
+    font-style: italic;
+    border-left: 1px solid #c7cfd2;
+}
+
+#materials .group {
+    margin-bottom: 10px;
+}
+
+#dealers {
+    width: 100%;
+    text-align: left;
+    border-collapse:collapse;
+    font-size: 11px;
+    vertical-align: middle;
+}
+
+#dealers td, #dealers th {
+    text-align: center;
+}
+
+#dealers td img {
+    position: relative;
+    left: -1px;
+}
+
+#dealers a {
+    font-size: 11px;
+    color: #000000;
+    text-decoration: none;
+}
+
+#dealers a:hover {
+    color: #666666;
+}
+
+#dealers thead {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#dealers .dealer {
+    text-align: left;
+    padding-left: 10px;
+}
+
+#dealers tbody th.dealer {
+    font-size: 12px;
+}
+
+#dealers tbody td.dealer div {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#dealers tbody th.regional div {
+    margin-bottom: 5px;
+}
+
+#dealers td, #dealers th {
+    height: 40px;
+    border: 1px solid #d6d6d6;
+}
+
+#dealers tr.column-header th {
+    font-size: 11px;
+    font-weight: normal;
+}
+
+#dealers tbody th.regional {
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+#dealers thead th.dealer input {
+    width: 168px;
+    line-height: 22px;
+    height: 22px;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+#dealers tr:first-child th {
+    border-top: 0;
+}
+#dealers tr td:first-child,
+#dealers tr th:first-child {
+    border-left: 0;
+}
+#dealers tr td:last-child,
+#dealers tr th:last-child {
+    border-right: 0;
+}
+
+#dealers .budget {
+    background: #fcfcfc;
+}
+
+#dealers .percent {
+    background: #f0f4f8;
+}
+
+#dealers .num {
+    display: inline-block;
+    width: 25px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+#dealers .message {
+    background: url('../../images/table-icons.png') 4px -210px no-repeat;
+    width: 31px;
+    height: 23px;
+    line-height: 20px;
+    padding: 1px 0 0 0px;
+    text-align: center;
+    margin: 0px auto;
+    color: #ec0000;
+    cursor: pointer;
+}
+
+.model.modal .specialists-panel {
+    color: #32424f;
+}
+
+.model.modal .specialists-panel h1 {
+    margin-bottom: 14px;
+}
+
+.model.modal .specialists-panel form table {
+    width: 86.2%;
+}
+
+.model.modal .specialists-panel form table td {
+    padding: 0px;
+    vertical-align: middle;
+    height: 53px;
+    border: none;
+    padding-right: 3px;
+}
+
+.model.modal .specialists-panel form table td.label {
+    background: none;
+}
+
+.model.modal .specialists-panel form table td input[type='checkbox'] {
+    top: -3px;
+}
+
+.model.modal .specialists-panel .btn-group {
+    width: 380px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.model.modal .specialists-panel .button.btn-primary {
+    float: left;
+}
+
+.model.modal .specialists-panel .button.cancel-btn {
+    float: right;
+}
+
+.model.modal .specialists-panel .button {
+    width: 180px;
+}
+
+.model.modal .specialists-panel form table td textarea {
+    margin-bottom: 10px;
+}
+
+.model.modal .specialists-panel .msg-button {
+    display: block;
+    height: 31px;
+    width: 31px;
+    cursor: pointer;
+    border: 1px solid #ced7d9;
+    border-radius: 6px;
+    background: #f7f7f7;
+    margin-left: 15px;
+}
+
+.model.modal .specialists-panel .msg-button:hover {
+    background: #e2e2e2;
+}
+
+.model.modal .specialists-panel .msg-button .ico {
+    width: 31px;
+    height: 31px;
+    background: url("../images/message-icon.png")no-repeat center center;
+}
+
+.model.modal .specialists.button {
+    padding: 0 21px;
+    margin-right: 7px;
+}
+
+.model.modal .accept.button, .model.modal .decline.button {
+    padding: 0 21px;
+}
+
+.modal.model textarea {
+    display: block;
+}
+
+.modal.model textarea.full-width {
+    width: 100%;
+    height: 85px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.modal.model .select.full-width {
+    margin-top: 15px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 31px;
+}
+
+.modal.model .decline-panel, .modal.model .accept-panel {
+    width: 484px;
+    margin: 0 auto;
+}
+
+.modal.model .accept-panel textarea.full-width {
+    margin-bottom: 0px;
+}
+
+.out-of-date {
+    background: rgb(255, 122, 0);
+}
+
+/* nfz overrides */
+#agreement-models { clear: both; padding-top: 20px; }
+#filters .modal-select-wrapper.dealer { width: 320px; }
+#filters .date-input input { height: 34px; }

@@ -1,0 +1,2 @@
+all:
+  javascripts: [ user/bind_dealers ]

@@ -1,0 +1,1 @@
+<?php include_partial('mail_templates', array('templates' => $sendMailTemplate)); ?>

@@ -1,0 +1,64 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Activity
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        start_date: { label: Дата начала }
+        end_date: { label: Дата окончания }
+        custom_date: { label: Произвольная дата }
+        description: { label: Подробное описание }
+        brief: { label: Краткое описание }
+        materials_url: { label: Ссылка на материалы }
+        finished: { label: Завершено }
+        importance: { label: Влияние на получение бонуса, help: Выполнение данной активности влияет на получение бонуса по маркетингу сервиса }
+        full_info: { label: Информация }
+        files: { label: Файлы }
+        tasks: { label: Задачи }
+        has_concept: { label: Активность с концепцией }
+        is_concept_complete: { label: Выполнение концепции, help: Активность считается выполненной после согласования концепции }
+        modules_list: { label: Модули }
+        dealers_list: { label: Дилеры }
+        sort: { label: Сортировка }
+        hide: { label: Скрыто }
+        select_activity: { label: Выделить активность }
+        is_limit_run: { label: Выполнение активности, help : Разрешить выполнять активность только раз в году }
+        allow_to_all_dealers: { label: Все дилеры, help : Доступ к активности имеют все дилеры }
+        fields: { label : Статистика }
+        stat_periods: { label: Стат.(период) }
+        stats_description: { label: Описание статистики }
+        is_own: { label: Не учитывать в бюджете }
+        many_concepts: { label: Разрешить несколько концепций }
+        allow_extended_statistic: { label: Разрешить расширенную статистику }
+        allow_certificate: { label: Разрешить использование сертификатов }
+        dealers: { label : Дилеры }
+        video_records_stats: { label : Статистика (Эффективность) }
+        mandatory_activity: { label: Обязательная активность }
+      list:    
+        title: Активности
+        batch_actions:
+         _delete: ~
+         copy:    ~
+         _show_all: ~
+        display: [ _id, _name, _full_info, _files, _tasks, _video_records_stats, _stat_periods, _dealers, hide ]
+        max_per_page: 25
+      filter:  
+        fields: 
+          importance: { help: ~ }
+        display: [ name, start_date, end_date, finished, importance, hide ]
+      form:    ~
+      edit:   
+        title: Активность "%%name%%"
+      new:     
+        title: Новая активность

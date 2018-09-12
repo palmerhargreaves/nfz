@@ -1,0 +1,29 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           AgreementModelBlank
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          agreement_model_blank
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        model_type_id: { label: Тип }
+        model_type: { label: Тип }
+      list:    
+        title: ""
+        display: [ =name, _model_type ]
+      filter:  
+        class: false
+      form:    ~
+      edit:   
+        title: Болванка "%%name%%"
+      new:     
+        title: Новая болванка

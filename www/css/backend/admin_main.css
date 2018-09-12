@@ -1,0 +1,77 @@
+body
+{
+  padding: 0 30px;
+  text-align: left;
+}
+
+form th {
+  text-align: left;
+}
+
+.sf_admin_filter select {
+  width: auto;
+}
+
+table.budget .quarter {
+  text-align: center;
+}
+
+table.budget td.sum ul.sf_admin_actions {
+  margin: 0 !important;
+}
+
+.accept-task-modal.modal {
+  width: 750px;
+  margin-left: -350px;
+}
+
+#sf_admin_container label {
+	width: 25em !important;
+}
+
+#sf_admin_container textarea {
+	width: 80%;
+  height: 250px;
+}
+
+#sf_admin_container #user_dealers_list {
+  width: 370px;
+  height: 200px;
+}
+
+#sf_admin_container input[type="text"] {
+  width: 80%;
+}
+
+.news-status {
+  width: 18px; height: 16px; 
+  margin: auto;
+  background-repeat: no-repeat; 
+  cursor: pointer;
+}
+
+.news-active {
+  background: url(../../images/ticks.png) 0px 0px; 
+}
+
+.news-active:hover {
+  background: url(../../images/ticks.png) -16px 0px;  
+}
+
+.news-inactive {
+  background: url(../../images/ticks.png) -16px 0px;
+}
+
+.news-inactive:hover {
+  background: url(../../images/ticks.png) 0px 0px; 
+}
+
+table.table-header-rotated tbody tr:nth-child(2n-1) {
+    background-color: #f5f5f5;
+    transition: all .125s ease-in-out;
+}
+table.table-header-rotated tbody tr:hover {
+    background-color: rgba(129,208,177,.3);
+}
+
+#activity_dealers_list, #material_activities_list { min-width: 550px !important; min-height: 300px !important; }

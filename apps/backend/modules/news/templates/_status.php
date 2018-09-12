@@ -1,0 +1,1 @@
+<div class="news-status-change news-status <?php echo $news->getStatus() ? "news-active" : "news-inactive"; ?>" title="<?php echo $news->getStatus() ? 'Снять с публикации' : 'Опубликовать'; ?>" data-url="<?php echo url_for('@news_change_status?id='.$news->getId()); ?>" />

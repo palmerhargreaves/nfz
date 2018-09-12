@@ -1,0 +1,34 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityEfficiencyFormulas
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_efficiency_formulas
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        description: { label: Краткое описание }
+        main_formula: { label: Отображение эффективности }
+        status: { label: Выводить результат выполнения формулы }
+        work_formula_id: { label: Родительская формула }
+      list:
+        title: Список активных формул
+        display: [ id, name, work_formula_id, efficiency_param_id ]
+        max_per_page: 25
+        actions: {}
+      filter:
+       class: false
+      form:    ~
+      edit:    
+        title: Параметры формулы "%%name%%"
+      new:     
+        title: Новая формула

@@ -1,0 +1,12 @@
+all:
+  stylesheets: [bootstrap]
+  javascripts:
+    #- jquery.min.js
+    #- jquery-ui.custom.min.js
+    #- jquery-ui.min.js
+    #- plugins/tables/jquery.dataTables.min.js
+    #- plugins/tables/jquery.dataTables.columnFilter.js
+    #- plugins/tables/jquery.dataTables.rowReordering.js
+    #- datepicker.js
+    - sortable.js
+    

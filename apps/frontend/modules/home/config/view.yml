@@ -1,0 +1,6 @@
+all:
+  stylesheets: [manager]
+  javascripts:
+    - intro/intro.main.js  
+    - news.js
+    - registration/post.js

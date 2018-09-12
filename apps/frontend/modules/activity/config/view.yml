@@ -1,0 +1,27 @@
+all:
+  stylesheets: [manager] 
+  javascripts:
+    - intro/intro.activity.info.js
+    - activity/activity_quarters_data.js
+    - activity/activity_video_record_statistic.js
+    - activity/activity_extended_statistic.js
+    - activity/statictic/activity_simple_statistic.js
+    - activity/efficiency/activity_efficiency_graph_arrow.js
+    - libs/jquery.animateNumber.min.js
+
+statisticInfoSuccess:
+  stylesheets: [activities_status_table]
+  javascripts: [filter/filter, table-highlighter/table-highlighter, table-header-fixer/table-header-fixer]
+
+efficiencyInfoSuccess:
+  stylesheets: [activities_status_table]
+  javascripts: [filter/filter, table-highlighter/table-highlighter, table-header-fixer/table-header-fixer]
+
+dealersWorkStatisticsSuccess:
+  stylesheets: [ toastr/toastr.css, activities_status_table.css ]
+  javascripts: [ plugins/toastr/toastr.js, messages/messages.js ]
+
+extendedStatisticByStepsSuccess:
+  stylesheets: [manager]
+  javascripts:
+    - activity/activity_extended_steps_statistic.js

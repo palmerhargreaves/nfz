@@ -1,0 +1,5 @@
+all:
+  javascripts: 
+      - material/list_controller
+      - material/window
+      - intro/intro.activity.materials.js

@@ -1,0 +1,20 @@
+all:
+  stylesheets: [manager]
+  javascripts:
+    - plugins/tables/jquery.dataTables.min.js
+    - plugins/tables/jquery.dataTables.columnFilter.js
+    - plugins/tables/jquery.dataTables.rowReordering.js
+    - activity/module/agreement/model/management/report/report_favorites_controller.js
+    - activity/favorites_reports.js
+    - utils/utils.js
+    - activity/model_discussion_count_load.js
+  
+modelSuccess:
+  has_layout: false
+modelError:
+  has_layout: false
+reportSuccess:
+  has_layout: false
+reportError:
+  has_layout: false
+  

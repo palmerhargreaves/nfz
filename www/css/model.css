@@ -1,0 +1,660 @@
+.modal.model {
+    top: 25px;
+    width: 759px;
+    margin-left: -361px;
+    padding: 0px 9px 0px;
+    border-radius: 4px;
+    display: none;
+}
+
+.modal.model .modal-header {
+    position: relative;
+    height: 54px;
+    margin: 0px -9px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background: #ececec;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom: 1px solid #c2cacc;
+}
+
+/* Tabs */
+
+.modal.model .modal-header .tabs {
+    position: absolute;
+    top: 18px;
+}
+
+.modal.model .modal-header .tabs .tab {
+    border-bottom: 1px solid #c2cacc;
+}
+
+.modal.model .modal-header .tabs .tab.active {
+    border-bottom: 1px solid #ffffff;
+}
+
+.modal.model .modal-header .tabs .tab.disabled {
+    color: #cccccc;
+    cursor: default;
+}
+
+.modal.model .modal-header .tabs .tab span {
+    height: 35px;
+    width: 169px;
+    padding: 0;
+    text-align: center;
+}
+
+.modal.model .modal-header .tabs .tab span:before {
+    position: absolute;
+    top: 9px;
+    left: 18px;
+    width: 18px;
+    height: 23px;
+    content: "";
+}
+
+.modal.model .modal-header .tabs .tab.wait span:before, .modal.model .modal-header .tabs .tab.wait_specialist span:before {
+    background: url('../images/table-icons.png') 0px -158px no-repeat;
+}
+
+.modal.model .modal-header .tabs .tab.accepted span:before {
+    background: url('../images/ok-icon-active.png') 0px 1px no-repeat;
+}
+
+.modal.model .modal-header .tabs .tab.declined span:before {
+    background: url('../images/table-icons.png') 0px -180px no-repeat;
+}
+
+.modal.model .modal-header .tabs .tab.pencil span:before {
+    background: url('../images/table-icons.png') 0px -180px no-repeat;
+}
+
+.modal.model .modal-header .tabs .tab.clock span:before {
+    background: url('../images/table-icons.png') 0px -158px no-repeat;
+}
+
+.modal.model .modal-header .tabs .tab.ok span:before {
+    background: url('../images/ok-icon-active.png') 0px 1px no-repeat;
+}
+
+.modal.model .modal-header .tabs .tab.ok span:before {
+    background: url('../images/ok-icon-active.png') 0px 1px no-repeat;
+}
+
+.modal.model .tabs .tab .message {
+    position: absolute;
+    top: 7px;
+    left: 18px;
+    width: 31px;
+    height: 23px;
+    padding: 1px 0 0 0px;
+    margin: 0;
+    background: url('../images/table-icons.png') 4px -210px no-repeat;
+    text-align: center;
+    color: #ec0000;
+    line-height: 20px;
+    font-size: 11px;
+}
+
+/* Specialists */
+.modal.model .modal-form .specialists-panel table td.label {
+    width: auto;
+    text-align: left;
+}
+
+.modal.model tr .msg-button {
+    visibility: hidden;
+}
+
+.modal.model tr:hover .msg-button, tr .msg-button.active {
+    visibility: visible;
+}
+
+.modal.model .specialist-message textarea {
+    width: 100%;
+    height: 80px;
+}
+
+.modal.model .specialist-message {
+    display: none;
+}
+
+.modal.model .modal-form table .specialist-message td {
+    padding-top: 8px;
+}
+
+/* Buttons */
+
+.modal.model .buttons {
+    width: 485px;
+    margin: 30px auto 0;
+}
+
+.modal.model .buttons .link {
+    margin-top: 15px;
+}
+
+.modal.model .buttons .link a {
+    color: #b41c07;
+}
+
+.modal.model .modal-form-button {
+    width: auto;
+    padding: 0px 24px;
+}
+
+.modal.model .modal-form-button.disabled {
+    cursor: default;
+    border: 1px solid #ededed;
+    background: #e2e2e2;
+    text-shadow: none;
+    background: linear-gradient(180deg, #ededed 0%, #d8d8d8 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#d8d8d8', GradientType=0);
+}
+
+.modal.model .modal-form-delete-file {
+    display: inline-block;
+    cursor: pointer;
+    background: url(../images/delete-icon.png) 0 0px no-repeat;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    top: 1px;
+    margin-left: 5px;
+}
+
+/* Form */
+
+.modal.model .tab-pane {
+    position: relative;
+}
+
+.modal.model .modal-form {
+    padding: 38px 20px 30px 20px;
+}
+
+.modal.model .modal-form table {
+    font-size: 13px;
+    width: 485px;
+    margin: auto;
+}
+
+.modal.model .modal-form table td {
+    padding: 3px 8px;
+    vertical-align: middle;
+    border-top: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    height: 41px;
+}
+
+.modal.model .modal-form table td.label {
+    color: #46494a;
+    font-weight: bold;
+    width: 227px;
+    background: #f2f2f2;
+}
+
+.modal.model .modal-form .modal-select-wrapper {
+    margin-bottom: 0px;
+    font-weight: normal;
+    color: #5e6d81;
+}
+
+.modal.model .modal-form .select .modal-select-dropdown-item {
+    padding-top: 6px;
+    height: 24px;
+}
+
+.modal.model .modal-form .modal-input-wrapper {
+
+}
+
+.modal.model .modal-form .modal-input-wrapper input {
+    height: 31px;
+    font-size: 13px;
+    color: #5e6d81;
+}
+
+.modal.model .modal-form table td.field {
+
+}
+
+.modal.model .modal-form table .value {
+    font-size: 13px;
+    color: #5e6d81;
+    position: relative;
+    padding: .75em 12px;
+    border: 1px solid #ced7d9;
+    border-radius: 4px;
+}
+
+.modal.model .modal-form table td.submit {
+    padding-top: 20px;
+}
+
+.modal.model .modal-form table td.submit a {
+    font-size: 14px;
+    color: #b51a1a;
+}
+
+.modal.model .modal-form-requirements {
+    color: #828282;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.modal.model .modal-form-info {
+    color: #555555;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.modal.model .type-fields {
+    display: none;
+}
+
+.modal.model form .field .value {
+    display: none;
+}
+
+.modal.model form .field .file .value {
+    display: inline-block;
+}
+
+.modal.model form .field .file .value.file-name {
+    margin: 5px 0 0;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 270px;
+}
+
+.modal.model form.edit .model-type .input {
+    display: none;
+}
+
+.modal.model form.edit .model-type .value {
+    display: block;
+}
+
+.modal.model form.edit table td.model-type {
+}
+
+.modal.model form.edit .number-field .value {
+    display: block;
+}
+
+.modal.model form.accepted .submit {
+    visibility: hidden;
+}
+
+.modal.model form .draft {
+    display: none;
+}
+
+.modal.model form .delete {
+    display: none;
+}
+
+.modal.model form .cancel {
+    display: none;
+}
+
+.modal.model form.edit .draft,
+.modal.model form.add .draft {
+    display: block;
+}
+
+.modal.model form.edit .delete {
+    display: block;
+}
+
+.modal.model form.view .submit-btn {
+    display: none;
+}
+
+.modal.model form.view .field .value {
+    display: block;
+}
+
+.modal.model form.view .field .input {
+    display: none;
+}
+
+.modal.model form.view table td.field {
+
+}
+
+.modal.model form.view .cancel {
+    display: block;
+}
+
+.modal.model form.view.accepted .cancel {
+    display: none;
+}
+
+.modal.model form.accepted .submit-btn,
+.modal.model form.accepted .draft-btn,
+.modal.model form.accepted .delete-btn {
+    display: none;
+}
+
+/* File input */
+
+.modal-file-wrapper .control .modal-form-button {
+    height: 34px;
+    width: 34px;
+    padding: 0;
+    background: #8dcc97 url('../images/clip-icon4.png') no-repeat center center;
+}
+
+.modal-file-wrapper .control:hover .modal-form-button {
+    background-color: #a0e8ac;
+}
+
+.modal-file-wrapper .control {
+    float: left;
+}
+
+.file .file-name {
+    line-height: 22px;
+    margin-top: 6px;
+    margin-left: 10px;
+    padding: 0 10px;
+    background: #ededed;
+    font-size: 12px;
+    display: inline-block;
+    max-width: 162px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+form.accepted .file .file-name, form.view .file .file-name {
+    line-height: inherit;
+    margin: 0;
+    padding: 0;
+    background: none;
+    max-width: none;
+    display: inline;
+    white-space: normal;
+    overflow: auto;
+}
+
+.modal-file-wrapper {
+    position: relative;
+}
+
+.modal-file-wrapper .control .modal-form-button {
+    display: block;
+}
+
+.modal-file-wrapper .control {
+    position: relative;
+    overflow: hidden;
+    width: 34px;
+    height: 34px;
+}
+
+.modal-file-wrapper input {
+    margin-top: -60px;
+    margin-left: -410px;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    font-size: 150px;
+    height: 66px;
+    position: relative;
+    z-index: 50;
+}
+
+.scroller-wrapper .modal-file-wrapper input {
+    margin-top: 0px;
+    margin-left: 0px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: auto;
+    min-height: 500px;
+}
+
+
+.concept-report-file .modal-file-wrapper input {
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.modal-textarea-wrapper textarea {
+    width: 350px;
+    height: 200px;
+}
+
+.form-loader {
+    display: block;
+    margin: 0 auto;
+}
+
+#confirm-delete {
+    display: none;
+    width: 364px;
+    margin-left: -182px;
+}
+
+.modal-input-group-wrapper .modal-short-input-wrapper {
+    float: left;
+    width: 37%;
+    position: relative;
+}
+
+.modal-input-group-wrapper .modal-short-input-wrapper:last-child {
+    float: right;
+}
+
+.model.modal .chat .scroller {
+    margin-top: 10px;
+}
+
+.model.modal .chat .modal-header-search {
+    display: none;
+}
+
+.model.modal .label .sub {
+    color: #828282;
+    font-size: 10px;
+}
+
+.model.modal .chat .scroller, .model-pane .scroller, .report-pane .scroller  {
+    margin-top: 10px;
+}
+
+
+/* Concept TBD */
+
+#concept-modal .modal-form table {
+    font-size: 14px;
+}
+
+#concept-modal .modal-form table.send-form {
+    font-size: 12px;
+    width: 100%;
+}
+
+#concept-modal .modal-form table td {
+    padding: 8px;
+    vertical-align: top;
+    padding-top: 21px;
+}
+
+#concept-modal .modal-form table td.description {
+    width: 65%;
+    font-weight: bold;
+    padding: 0 30px 0 8px;
+}
+
+#concept-modal .modal-form table td.description li {
+    list-style: disc inside;
+    font-style: italic;
+    color: #0078AD;
+    padding-top: 0;
+}
+
+#concept-modal .modal-form table td.form {
+    font-weight: bold;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#concept-modal .modal-form table td.label {
+    text-align: left;
+    width: auto;
+    font-weight: bold;
+    padding: 21px 8px 8px;
+    vertical-align: top;
+}
+
+#concept-modal .modal-form table.send-form td.field {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+#concept-modal .modal-form table td.submit {
+    text-align: left;
+}
+
+#concept-modal .modal-form table.send-form td.submit {
+    padding-top: 20px;
+    text-align: center;
+}
+
+/* Input messages */
+
+.model.modal form .message {
+    top: 2px;
+    padding: 6px 8px;
+    display: none;
+    z-index: 999;
+}
+
+.model.modal form .modal-select-wrapper .message {
+    top: -4px;
+}
+
+.model.modal form .message:before {
+    top: 6px;
+    left: -8px;
+    border-width: 7px;
+}
+
+.model.modal form .message:after {
+    top: 6px;
+    left: -7px;
+    border-width: 7px;
+}
+
+.model.modal .concept-form .description {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.model.modal .concept-form .requirements {
+    position: relative;
+    background: #d1ebd5;
+    padding: 23px;
+    margin-bottom: 15px;
+}
+
+.model.modal .concept-form .requirements:after {
+    content: "";
+    position: absolute;
+    border-right: 8px solid rgba(255, 255, 255, 0);
+    border-top: 8px solid #d1ebd5;
+    border-left: 8px solid rgba(255, 255, 255, 0);
+    left: 8px;
+    top: 100%;
+}
+
+.model.modal .concept-form .requirements ul {
+    margin-left: 16px;
+}
+
+.model.modal .concept-form .requirements ul li {
+    list-style: disc;
+    padding-bottom: 7px;
+    color: #2f2f2f;
+}
+
+.model.modal .concept-form .requirements ul li:last-child {
+    padding-bottom: 0px;
+}
+
+/* agreement info */
+.activity .content-wrapper .pane > div.agreement-info {
+    display: block;
+}
+
+.agreement-info {
+    padding: 2px 10px 0;
+    float: left;
+    color: #D2221F;
+}
+
+/* nfz overrides */
+.modal.model .modal-header {
+    background: none;
+    border: 0;
+}
+
+.modal.model .modal-header .tabs {
+    position: relative;
+    top: 0;
+    padding-top: 13px;
+}
+
+.modal.model .modal-header .tabs .tab {
+    border-bottom: 0 !important;
+}
+
+.modal.model .modal-header .tabs .tab span {
+    display: block;
+    height: auto;
+    line-height: normal;
+    padding: .75em 20px .5em 50px;
+    width: auto;
+    background: none;
+    font-weight: 700 !important;
+    min-width: 100px;
+    text-align: left;
+    text-shadow: none !important;
+}
+
+.modal.model .modal-header .tabs .tab.active span {
+    color: #fff;
+}
+
+.modal.model .tabs .tab .message {
+    left: 5px;
+    background: url(../images/icon_comm.png) 0 0 no-repeat;
+    width: 27px;
+    height: 25px;
+    color: #000;
+    font-size: 12px;
+    line-height: 22px;
+}
+
+.modal.model .modal-form table {
+    width: 100%;
+}
+
+#models-list {
+    font-size: 11px;
+}
+
+#models-list td {
+    padding-left: 7px;
+    padding-right: 7px;
+}

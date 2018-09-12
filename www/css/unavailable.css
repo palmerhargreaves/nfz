@@ -1,0 +1,18 @@
+.unavailable #content {
+  padding-top: 20px;
+  font-size: 20px;
+}
+
+.unavailable #content h1 {
+  font-size: 130%;
+  margin-bottom: 1em;
+}
+
+.unavailable #content .reload {
+  font-size: 80%;
+}
+
+.unavailable #content .reload a {
+  text-decoration: none;
+  border-bottom: #4578A8 dashed 1px;
+}

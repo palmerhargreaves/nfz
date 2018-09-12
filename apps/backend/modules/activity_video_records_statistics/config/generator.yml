@@ -1,0 +1,39 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityVideoRecordsStatistics
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_video_records_statistics
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        header: { label: Название статистики }
+        headers: { label: Заголовки, attributes: { style: "width: 500px" } }
+
+        activity: { label: Активность }
+        groups: { label: Группы полей }
+        fields: { label: Поля статистики }
+        status: { label: Активна }
+        copy: { label: Копирование }
+      list:
+        title: Список созданных статистик
+        display: [ id, header, _activity, _headers, _copy ]
+        max_per_page: 25
+        actions: {}
+      filter:
+       class: false
+      form:    ~
+      edit:    
+        title: Статистика "%%header%%"
+      new:     
+        title: Новая статистика
+
+

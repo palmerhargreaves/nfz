@@ -1,0 +1,11 @@
+all:
+  stylesheets: [manager]
+  javascripts:
+    - utils/utils.js
+  
+dealersSuccess:
+  has_layout: false
+
+activitiesStatusSuccess:
+  stylesheets: [activities_status_table]
+  javascripts: [filter/filter, table-highlighter/table-highlighter, table-header-fixer/table-header-fixer]

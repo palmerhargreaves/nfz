@@ -1,0 +1,7 @@
+all:
+  stylesheets: [manager]
+  javascripts:
+      - utils/utils.js
+
+indexSuccess:
+  javascripts: [filter/filter]

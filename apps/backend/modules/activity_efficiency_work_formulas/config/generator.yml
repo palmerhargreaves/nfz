@@ -1,0 +1,30 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityEfficiencyWorkFormulas
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_efficiency_work_formulas
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        type: { label: Тип формулы }
+      list:
+        title: Список типов формул
+        display: [ id, name, type ]
+        max_per_page: 25
+      filter:
+       class: false
+      form:    ~
+      edit:    
+        title: Параметры формулы "%%name%%"
+      new:     
+        title: Новая формула

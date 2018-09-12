@@ -1,0 +1,59 @@
+.content-header {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.content-desc {
+	background: #ecf2f4;
+	border: 1px solid #dfe4e6;
+	padding: 11px 16px;
+	margin: 13px 0px 17px;
+	line-height: 17px;
+	border-radius: 3px;
+}
+
+.contributors-wrapper {
+
+}
+
+.contributor {
+	height: 60px;
+	position: relative;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.contributor > div {
+	float: left;
+	line-height: 17px;
+	padding: 0 10px;
+}
+
+.contributor .name {
+	padding: 0 0 0 17px;
+	font-weight: bold;
+	width: 246px;
+}
+
+.contributor .position {
+	font-weight: bold;
+	width: 292px;
+}
+
+.contributor .email {
+	font-style: italic;
+}
+
+.contributor .remove {
+	display: none;
+	background: url('../images/remove-icon.png') 0px 0px no-repeat;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	top: 16px;
+	right: 16px;
+}
+
+.contributor:hover .remove {
+	display: block;
+}

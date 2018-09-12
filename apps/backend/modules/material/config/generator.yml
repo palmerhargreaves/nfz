@@ -1,0 +1,46 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           Material
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          material
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+
+    config:
+      actions: ~
+      fields:  
+        name: { label: Название }
+        category_id: { label: Категория }
+        category: { label: Категория }
+        activity_id: { label: Активность }
+        activity: { label: Активность }
+        preview: { label: Превью }
+        web_previews: { label: Web-превью }
+        sources: { label: Исходники }
+        orders: { label: Порядок }
+        editor_link: { label: Редактор материалов }
+        activities_list: { label: Активности }
+        material_status: { label: Опубликовать }
+        status: { label: Опубликовать }
+      list:
+        title: Материалы
+        batch_actions:
+          _delete: ~
+          copy: ~
+          _show_all: ~
+        display: [ id, _name, _category, _activity, _editor, _preview, _web_previews, _sources, _status ]
+      filter:  
+        display: [ category_id, activities_list, name ]
+        fields:
+          activities_list:
+            label: Активность
+      form:    ~
+      edit:   
+        title: Материал "%%name%%"
+      new:     
+        title: Новый материал

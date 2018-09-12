@@ -1,0 +1,9 @@
+all:
+  stylesheets: 
+    - history
+  javascripts: 
+    - auto_pager/auto_pager
+    - auto_pager/searcher
+  
+pageSuccess:
+  has_layout: false

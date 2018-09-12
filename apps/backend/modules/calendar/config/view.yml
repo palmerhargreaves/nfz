@@ -1,0 +1,9 @@
+all:
+  javascripts:
+    - jquery.min.js
+    - jquery-ui.custom.min.js
+    - plugin/moment.js
+    - plugin/jquery.fullcalendar.min.js
+    - plugin/calendar.lang.js
+    - jquery.ui.datepicker-ru.js
+    - datepicker.js

@@ -1,0 +1,1 @@
+<?php echo $agreement_model_blank->getModelType()->getName() ?>

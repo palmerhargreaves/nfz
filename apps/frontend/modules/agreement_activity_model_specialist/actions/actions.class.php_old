@@ -1,0 +1,308 @@
+<?php
+
+/**
+ * agreement_activity_model_specialist actions.
+ *
+ * @package    Servicepool2.0
+ * @subpackage agreement_activity_model_specialist
+ * @author     Your name here
+ * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
+ */
+class agreement_activity_model_specialistActions extends ActionsWithJsonForm
+{
+  const SORT_ATTR = 'man_sort';
+  const SORT_DIRECT_ATTR = 'man_sort_direct';
+  
+ /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeIndex(sfWebRequest $request)
+  {
+    $this->outputModels($request);
+    $this->outputConcepts();
+  }
+  
+  function executeSort(sfWebRequest $request)
+  {
+    $column = $request->getParameter('sort', 'id');
+    $cur_column = $this->getSortColumn();
+    $direction = $this->getSortDirection();
+    
+    if($column == $cur_column)
+    {
+      $direction = !$direction;
+    }
+    else
+    {
+      $direction = false;
+      $cur_column = $column;
+    }
+    
+    $this->setSortColumn($cur_column);
+    $this->setSortDirection($direction);
+    
+    $this->redirect('@agreement_module_management_models');
+  }
+  
+  function executeModel(sfWebRequest $request)
+  {
+    $model = $this->getModel($request);
+    if(!$model)
+      return sfView::ERROR;
+    
+    $this->model = $model;
+  }
+  
+  function executeReport(sfWebRequest $request)
+  {
+    $model = $this->getModel($request);
+    if(!$model)
+      return sfView::ERROR;
+    
+    $this->report = $model->getReport();
+  }
+  
+  function executeDeclineModel(sfWebRequest $request)
+  {
+    $model = $this->getModel($request);
+    $this->forward404Unless($model);
+    
+    $form = new AgreementDeclineForm(array(), array(
+      'comments_file_path' => AgreementModel::AGREEMENT_COMMENTS_FILE_PATH
+    ));
+    $form->bind(
+      array(
+        'agreement_comments' => $request->getPostParameter('agreement_comments')
+      ), 
+      $request->getFiles()
+    );
+    
+    if($form->isValid())
+    {
+      $comment = $model->getSpecialistComment($this->getUser()->getAuthUser());
+      $this->forward404Unless($comment);
+      
+      $utils = new AgreementModelStatusUtils();
+      $utils->declineComment($comment, $this->getUser()->getAuthUser(), $form->getValue('agreement_comments'), $form->getValue('agreement_comments_file'));
+    }
+    
+    return $this->sendFormBindResult($form, 'window.decline_model_form.onResponse');
+  }
+  
+  function executeAcceptModel(sfWebRequest $request)
+  {
+    $model = $this->getModel($request);
+    $this->forward404Unless($model);
+    
+    $form = new AgreementAcceptForm();
+    $form->bind(
+      array(
+        'agreement_comments' => $request->getPostParameter('agreement_comments')
+      )
+    );
+    
+    if($form->isValid())
+    {
+      $comment = $model->getSpecialistComment($this->getUser()->getAuthUser());
+      $this->forward404Unless($comment);
+      
+      $utils = new AgreementModelStatusUtils();
+      $utils->acceptComment($comment, $this->getUser()->getAuthUser(), $form->getValue('agreement_comments'));
+    }
+    
+    return $this->sendFormBindResult($form);
+  }
+  
+  function executeDeclineReport(sfWebRequest $request)
+  {
+    $model = $this->getModel($request);
+    $this->forward404Unless($model);
+    
+    $form = new AgreementDeclineForm(array(), array(
+      'comments_file_path' => AgreementModelReport::AGREEMENT_COMMENTS_FILE_PATH
+    ));
+    $form->bind(
+      array(
+//        'decline_reason_id' => $request->getPostParameter('decline_reason_id'),
+        'agreement_comments' => $request->getPostParameter('agreement_comments')
+      ), 
+      $request->getFiles()
+    );
+    
+    if($form->isValid())
+    {
+      $report = $model->getReport();
+      $this->forward404Unless($report);
+        
+      $comment = $report->getSpecialistComment($this->getUser()->getAuthUser());
+      $this->forward404Unless($comment);
+      
+      $utils = new AgreementReportStatusUtils();
+      $utils->declineComment(
+        $comment, 
+        $this->getUser()->getAuthUser(), 
+        $form->getValue('agreement_comments'), 
+        $form->getValue('agreement_comments_file')
+      );
+    }
+    
+    return $this->sendFormBindResult($form, 'window.decline_report_form.onResponse');
+  }
+  
+  function executeAcceptReport(sfWebRequest $request)
+  {
+    $model = $this->getModel($request);
+    $this->forward404Unless($model);
+    
+    $form = new AgreementAcceptForm();
+    $form->bind(
+      array(
+        'agreement_comments' => $request->getPostParameter('agreement_comments')
+      )
+    );
+    
+    if($form->isValid())
+    {
+      $report = $model->getReport();
+      $this->forward404Unless($report);
+      
+      $comment = $report->getSpecialistComment($this->getUser()->getAuthUser());
+      $this->forward404Unless($comment);
+      
+      $utils = new AgreementReportStatusUtils();
+      $utils->acceptComment($comment, $this->getUser()->getAuthUser(), $form->getValue('agreement_comments'));
+    }
+    
+    return $this->sendFormBindResult($form);
+  }
+  
+  function outputModels(sfWebRequest $request)
+  {
+    $sorts = array(
+      'id' => 'm.id',
+      'dealer' => 'm.dealer_id', // сортировка по id дилеров (фактически - это группировка)
+      'name' => 'm.name',
+      'cost' => 'm.cost',
+      'updated_at' => 'm.updated_at'
+    );
+    
+    $sort_column = $this->getSortColumn();
+    $sort_direct = $this->getSortDirection();
+    
+    $sql_sort = 'm.updated_at';
+    //$sql_sort = 'm.id';
+    if(isset($sorts[$sort_column]))
+      $sql_sort = $sorts[$sort_column].' '.($sort_direct ? 'DESC' : 'ASC');
+    
+    $user = $this->getUser()->getAuthUser();
+    
+    $this->models = AgreementModelTable::getInstance()
+                    ->createQuery('m')
+                    ->innerJoin('m.Activity a')
+                    ->innerJoin('m.ModelType mt WITH mt.concept=?', false)
+                    ->leftJoin('m.Comments mc')
+                    ->leftJoin('m.Discussion d')
+                    ->leftJoin('m.Report r')
+                    ->leftJoin('r.Comments rc')
+                    ->where('m.wait_specialist=?', true)
+                    ->andWhere('(mc.user_id=? and mc.status=?) or (rc.user_id=? and rc.status=?)', array($user->getId(), 'wait', $user->getId(), 'wait'))
+                    ->orderBy($sql_sort)
+                    ->execute();
+  }  
+  
+  function outputConcepts()
+  {
+    $user = $this->getUser()->getAuthUser();
+    
+    $this->concepts = AgreementModelTable::getInstance()
+                    ->createQuery('m')
+                    ->innerJoin('m.Activity a')
+                    ->innerJoin('m.ModelType mt WITH mt.concept=?', true)
+                    ->leftJoin('m.Comments mc')
+                    ->leftJoin('m.Discussion d')
+                    ->leftJoin('m.Report r')
+                    ->leftJoin('r.Comments rc')
+                    ->where('m.wait_specialist=?', true)
+                    ->andWhere('(mc.user_id=? and mc.status=?) or (rc.user_id=? and rc.status=?)', array($user->getId(), 'wait', $user->getId(), 'wait'))
+                    ->orderBy('m.id desc')
+                    ->execute();
+  }  
+  
+  /**
+   * Add message to discussion
+   * 
+   * @param AgreementModel $model
+   * @param string $text
+   * @return Message|false
+   */
+  protected function addMessageToDiscussion(AgreementModel $model, $text) 
+  {
+      $discussion = $model->getDiscussion();
+      
+      if(!$discussion)
+        return;
+      
+      $message = new Message();
+      $user = $this->getUser()->getAuthUser();
+      $message->setDiscussionId($discussion->getId());
+      $message->setUser($user);
+      $message->setUserName($user->selectName());
+      $message->setText($text);
+      $message->setSystem(true);
+      $message->save();      
+      
+      // mark as unread
+      $discussion->getUnreadMessages($user);
+    
+      return $message;
+  }
+  
+  protected function attachCommentsFileToMessage(ValidatedFile $uploaded_file, Message $message)
+  {
+    $file = new MessageFile();
+    $file->setMessageId($message->getId());
+    $file->setFile($message->getId().'-'.$uploaded_file->generateFilename());
+    $uploaded_file->save(sfConfig::get('sf_upload_dir').'/'.MessageFile::FILE_PATH.'/'.$file->getFile());
+    $file->save();
+  }
+  
+  function getSortColumn()
+  {
+    //return $this->getUser()->getAttribute(self::SORT_ATTR, 'id');
+    return $this->getUser()->getAttribute(self::SORT_ATTR, 'updated_at');
+  }
+  
+  function getSortDirection()
+  {
+    return $this->getUser()->getAttribute(self::SORT_DIRECT_ATTR, false);
+  }
+  
+  function setSortColumn($column)
+  {
+    $this->getUser()->setAttribute(self::SORT_ATTR, $column);
+  }
+  
+  function setSortDirection($direction)
+  {
+    $this->getUser()->setAttribute(self::SORT_DIRECT_ATTR, $direction);
+  }
+  
+  /**
+   * Returns model
+   * 
+   * @param sfWebRequest $request
+   * @return AgreementModel|false
+   */
+  function getModel(sfWebRequest $request)
+  {
+    return AgreementModelTable::getInstance()
+           ->createQuery('m')
+           ->innerJoin('m.Activity a')
+           ->leftJoin('m.Report r')
+           ->where('m.wait_specialist=? and m.id=? ', array(true, $request->getParameter('id')))
+           ->fetchOne();
+  }
+  
+}

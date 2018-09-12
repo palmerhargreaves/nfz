@@ -1,0 +1,156 @@
+.last {
+	border: 0!important;
+}
+
+.content-header {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.content-desc {
+	background: #dbe4e6;
+	border: 1px solid #bdc4c6;
+	padding: 11px 16px;
+	margin: 13px 0px 17px;
+	line-height: 17px;
+	border-radius: 3px;
+}
+
+.content-search {
+	position: absolute;
+	top: 19px;
+	right: 30px;
+	border: 1px solid #bbb;
+	width: 351px;
+	height: 20px;
+	border-radius: 7px;
+}
+
+.content-search input#search {
+	border: 0px;
+	height: 16px;
+	width: 315px;
+	margin: 0 10px;
+	outline: none;
+}
+
+.content-search input#search-button {
+	border: 0px;
+	width: 14px;
+	height: 14px;
+	outline: none;
+	background: #ffffff url('../images/search-icon.png') 0px 0px no-repeat;
+	position: absolute;
+	top: 3px;
+	right: 7px;
+	cursor: pointer;
+}
+
+.history-wrapper {
+	margin-top: 19px;
+	border-bottom: 1px solid #cfd7d9;
+}
+
+.history-item {
+	border-top: 1px solid #cfd7d9;
+	height: 40px;
+	position: relative;
+	cursor: pointer;
+        transition: background-color 0.2s;
+}
+
+.history-item:hover {
+	background: #f3f7f8;
+}
+
+.history-item.active {
+	background: #fff5d1;
+}
+
+.history-item.active:hover {
+        background: #fff9e2;
+}
+
+
+.history-item > div {
+	float: left;
+	line-height: 39px;
+	font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+}
+
+.history-item .name {
+	padding: 0 10px 0 17px;
+	font-weight: bold;
+	width: 264px;
+}
+
+.history-item .name a {
+	text-decoration: none;
+}
+
+.history-item .number {
+    font-weight: bold;
+    width: 40px;
+    font-size: 13px;
+    margin-left: 3px;
+}
+
+.history-item .project {
+	font-weight: bold;
+	width: 146px;
+	font-size: 13px;
+}
+
+.history-item.active .message {
+	font-weight: bold;
+}
+
+.history-item .message {
+	font-size: 13px;
+	width: 330px;
+}
+
+.history-item .icon {
+	width: 16px;
+	height: 36px;
+}
+
+.history-item .icon.clip {
+	background: url('../images/clip-icon.png') 0px 16px no-repeat;
+}
+
+.history-item .icon.ok {
+	background: url('../images/ok-icon-active.png') 0px 12px no-repeat;
+}
+
+.history-item .date {
+	width: 60px;
+	text-align: right;
+	font-weight: bold;
+	line-height: 40px;
+}
+
+.history-item .time {
+	width: 40px;
+	text-align: right;
+	font-weight: bold;
+	line-height: 40px;
+}
+
+.history-item .message {
+        margin: 0;
+}
+
+.history-wrapper .disabled {
+        cursor: default;
+}
+
+.preloader {
+	/*background: url('../images/preloader.png') 0px 0px no-repeat;*/
+	width: 50px;
+	height: 50px;
+	margin: 20px auto;
+}

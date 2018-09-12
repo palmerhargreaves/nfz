@@ -1,0 +1,32 @@
+generator:
+  class: sfDoctrineGenerator
+  param:
+    model_class:           ActivityVideoRecordsStatisticsHeaders
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          activity_video_records_statistics_headers
+    with_doctrine_route:   true
+    actions_base_class:    sfActions
+    with_wildcard_routes:  true
+
+    config:
+      actions: ~
+      fields:  
+        header: { label: Заголовок }
+      list:
+        title: Список заголовков
+        display: [ id, header ]
+        max_per_page: 25
+        actions: {}
+      filter:
+       class: false
+      form:    ~
+      edit:    
+        title: Параметры "%%header%%"
+      new:     
+        title: Новая заголовок
+
+
