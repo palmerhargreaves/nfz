@@ -17,13 +17,23 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
 	const FIELD_TYPE_DATE = 'date';
 	const FIELD_TYPE_CALC = 'calc';
 	const FIELD_TYPE_TEXT = 'text';
+    const FIELD_TYPE_FILE = 'file';
+    const FIELD_TYPE_MONEY = 'money';
 
 	const FIELD_CALC_SYMBOL_PLUS = 'plus';
 	const FIELD_CALC_SYMBOL_MINUS = 'minus';
 	const FIELD_CALC_SYMBOL_DIVIDE = 'divide';
 	const FIELD_CALC_SYMBOL_PERCENT = 'percent';
+    const FIELD_CALC_SYMBOL_MULTIPLE = 'multiple';
 
-	private $_fieldTypes = array(self::FIELD_TYPE_DATE => 'Дата', self::FIELD_TYPE_VALUE => 'Значение', self::FIELD_TYPE_CALC => 'Вычисляемое значение', self::FIELD_TYPE_TEXT => 'Текст', self::FIELD_TYPE_ANY_VALUE => 'Цифры / Символы');
+	private $_fieldTypes = array(
+	    self::FIELD_TYPE_DATE => 'Дата',
+        self::FIELD_TYPE_VALUE => 'Значение',
+        self::FIELD_TYPE_CALC => 'Вычисляемое значение',
+        self::FIELD_TYPE_TEXT => 'Текст',
+        self::FIELD_TYPE_ANY_VALUE => 'Цифры / Символы',
+        self::FIELD_TYPE_FILE => 'Файл',
+        self::FIELD_TYPE_MONEY => 'Копейки');
 
 	public function getFieldType() {
 		return $this->_fieldTypes[$this->getValueType()];

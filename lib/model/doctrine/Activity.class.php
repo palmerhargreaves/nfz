@@ -1448,4 +1448,8 @@ class Activity extends BaseActivity
 
         return $completed_models_count;
     }
+
+    public function isActivityStatisticHasSteps() {
+        return ActivityExtendedStatisticFieldsTable::getInstance()->createQuery()->where('activity_id = ? and step_id != ?', array($this->getId(), 0))->count();
+    }
 }

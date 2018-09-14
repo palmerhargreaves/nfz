@@ -38,49 +38,83 @@ abstract class BaseActivityExtendedStatisticFields extends sfDoctrineRecord
     {
         $this->setTableName('activity_extended_statistic_fields');
         $this->hasColumn('id', 'integer', null, array(
-             'type' => 'integer',
-             'primary' => true,
-             'autoincrement' => true,
-             ));
+            'type' => 'integer',
+            'primary' => true,
+            'autoincrement' => true,
+        ));
         $this->hasColumn('header', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => false,
-             'length' => 255,
-             ));
-        $this->hasColumn('description', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => false,
-             'length' => 255,
-             ));
+            'type' => 'string',
+            'notnull' => false,
+            'length' => 255,
+        ));
+        $this->hasColumn('description', 'clob', null, array(
+            'type' => 'clob',
+            'notnull' => false,
+        ));
         $this->hasColumn('activity_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('parent_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
+        $this->hasColumn('step_id', 'integer', null, array(
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('status', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('value_type', 'enum', null, array(
-             'type' => 'enum',
-             'values' => 
-             array(
-              0 => 'date',
-              1 => 'dig',
-              2 => 'calc',
-              3 => 'text',
-              4 => 'any'
-             ),
-             'notnull' => false,
-             ));
-        $this->hasColumn('order', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'enum',
+            'values' =>
+                array(
+                    0 => 'date',
+                    1 => 'dig',
+                    2 => 'calc',
+                    3 => 'text',
+                    4 => 'any',
+                    5 => 'file'
+                ),
+            'notnull' => false,
+        ));
+        $this->hasColumn('position', 'integer', null, array(
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('required', 'boolean', null, array(
+            'type' => 'boolean',
+            'notnull' => true,
+            'default' => true,
+        ));
+
+        $this->hasColumn('editable', 'boolean', null, array(
+            'type' => 'boolean',
+            'notnull' => true,
+            'default' => true,
+        ));
+
+        $this->hasColumn('def_value', 'string', null, array(
+            'type' => 'string',
+            'notnull' => true,
+            'default' => true,
+        ));
+
+        $this->hasColumn('dealers_group', 'string', null, array(
+            'type' => 'string',
+            'notnull' => true,
+            'default' => true,
+        ));
+
+        $this->hasColumn('show_in_export', 'boolean', null, array(
+            'type' => 'boolean',
+            'notnull' => true,
+            'default' => true,
+        ));
+
+        $this->hasColumn('show_in_statistic', 'boolean', null, array(
             'type' => 'boolean',
             'notnull' => true,
             'default' => true,

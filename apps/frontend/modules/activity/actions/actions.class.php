@@ -121,6 +121,13 @@ class activityActions extends BaseActivityActions
     {
         $this->activity = $this->getActivity($request);//ActivityTable::getInstance()->find($request->getParameter('activity'));
         $this->outputModelsQuarters($request);
+
+        $this->outputFilterByYear();
+        $this->outputFilterByQuarter();
+
+        if ($this->activity->isActivityStatisticHasSteps()) {
+            $this->setTemplate('extendedStatisticBySteps');
+        }
     }
 
     public function outputModelsQuarters(sfWebRequest $request)
@@ -241,8 +248,16 @@ class activityActions extends BaseActivityActions
 
     function executeBindToConcept(sfWebRequest $request)
     {
+        $this->outputFilterByYear();
+        $this->outputFilterByQuarter();
+
         $this->concept = $request->getParameter('concept');
         $this->activity = ActivityTable::getInstance()->find($request->getParameter('activity'));
+
+        $this->bindedConcept = ActivityExtendedStatisticFieldsTable::getConceptInfoByUserActivity($this->getUser());
+        if ($this->bindedConcept) {
+            $this->active_concept = $this->bindedConcept->getConceptId();
+        }
     }
 
     function getActivityFilter()
