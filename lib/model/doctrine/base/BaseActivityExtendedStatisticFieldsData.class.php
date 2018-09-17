@@ -38,30 +38,42 @@ abstract class BaseActivityExtendedStatisticFieldsData extends sfDoctrineRecord
     {
         $this->setTableName('activity_extended_statistic_fields_data');
         $this->hasColumn('id', 'integer', null, array(
-             'type' => 'integer',
-             'primary' => true,
-             'autoincrement' => true,
-             ));
+            'type' => 'integer',
+            'primary' => true,
+            'autoincrement' => true,
+        ));
         $this->hasColumn('field_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('activity_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('user_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('dealer_id', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
+        $this->hasColumn('step_id', 'integer', null, array(
+            'type' => 'integer',
+            'notnull' => false,
+        ));
+        $this->hasColumn('year', 'integer', null, array(
+            'type' => 'integer',
+            'notnull' => false,
+        ));
+        $this->hasColumn('quarter', 'integer', null, array(
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('value', 'integer', null, array(
-             'type' => 'integer',
-             'notnull' => false,
-             ));
+            'type' => 'integer',
+            'notnull' => false,
+        ));
         $this->hasColumn('concept_id', 'integer', null, array(
             'type' => 'integer',
             'notnull' => false,

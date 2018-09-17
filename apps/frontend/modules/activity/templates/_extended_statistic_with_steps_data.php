@@ -26,17 +26,19 @@
                 $allow_to_cancel = $step_status->getStatus();
                 $allow_to_edit = !$step_status->getStatus();
             }
+
+            $sections = $step->getSectionsList();
+            if (count($sections) == 0) {
+                continue;
+            }
+
             ?>
             <div class="drop-shadow perspective">
                 <p style="font-size: 14px;"><?php echo $step->getHeader(); ?></p>
                 <p><?php echo $step->getDescription(); ?></p>
             </div>
 
-            <?php
-            $sections = $step->getSectionsList();
-
-            foreach ($sections as $section):
-                ?>
+            <?php foreach ($sections as $section): ?>
                 <div class="group open" style="margin-left: 20px;">
                     <div class="group-header">
                         <span class="title"><?php echo $section[ 'data' ]; ?></span>
@@ -62,7 +64,7 @@
 
                                 <tr class="sorted-row model-row<?php if ($n++ % 2 == 0) echo ' even'; ?>">
 
-                                    <td style="width:605px; font-weight: bold; padding-left: 22px; <?php echo $field->getValueType() == ActivityExtendedStatisticFields::FIELD_TYPE_CALC ? 'background: #D3D3D3' : ''; ?>">
+                                    <td style="width:565px; font-weight: bold; padding-left: 22px; <?php echo $field->getValueType() == ActivityExtendedStatisticFields::FIELD_TYPE_CALC ? 'background: #D3D3D3' : ''; ?>">
                                         <?php
                                         echo $field->getHeader();
                                         if ($field->getDescription())

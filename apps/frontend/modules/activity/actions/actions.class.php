@@ -216,19 +216,11 @@ class activityActions extends BaseActivityActions
 
     function executeChangeExtendedStats(sfRequest $request)
     {
-        $fields = $request->getParameter('data');
+        $this->activity = $this->getActivity($request);
 
-        foreach ($fields as $field) {
-            $row = ActivityExtendedStatisticFieldsDataTable::getInstance()->createQuery()->where('id = ? and concept_id = ?', array($field['id'], $request->getParameter('concept')))->fetchOne();
+        $result = ActivityExtendedStatisticFields::saveData($request, $this->getUser(), $_FILES, $this->activity);
 
-            if ($row) {
-                $row->setValue($field['value']);
-                $row->setUpdatedAt(date('Y-m-d H:i:s'));
-                $row->save();
-            }
-        }
-
-        return $this->sendJson(array('success' => true));
+        return $this->sendJson($result, 'activity_extended_statistic.onSaveDataCompleted');
     }
 
     function executeStatisticInfo(sfWebRequest $request)
@@ -256,7 +248,7 @@ class activityActions extends BaseActivityActions
 
         $this->bindedConcept = ActivityExtendedStatisticFieldsTable::getConceptInfoByUserActivity($this->getUser());
         if ($this->bindedConcept) {
-            $this->active_concept = $this->bindedConcept->getConceptId();
+            $this->active_concept = $this->bindedConcept;
         }
     }
 
