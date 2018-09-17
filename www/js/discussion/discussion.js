@@ -54,7 +54,6 @@ Discussion.prototype = {
 
         this.getMessageField().keydown($.proxy(this.onKeyDownMessageField, this));
         this.getSearchForm().submit($.proxy(this.onSearch, this));
-
     },
 
     onResponse: function() {
@@ -409,9 +408,11 @@ Discussion.prototype = {
         this.getCommentPostBt().fadeIn();
     },
 
-    onPost: function () {
+    onPost: function (event) {
+        event.stopPropagation();
+
         if (this.started)
-            this.sendMessage();
+            this.sendMessage(event);
 
         return false;
     },
