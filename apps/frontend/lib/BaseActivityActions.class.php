@@ -55,10 +55,13 @@ class BaseActivityActions extends ActionsWithJsonForm
 
     public function outputFilterByQuarter()
     {
-        $default = $this->getUser()->getAttribute('current_q', D::getQuarter(time()), self::FILTER_Q_NAMESPACE);
+        $default = $this->getUser()->getAttribute('current_q', D::getQuarter(D::calcQuarterData(time())), self::FILTER_Q_NAMESPACE);
+        if ($default == 0) {
+            $default = D::getQuarter(D::calcQuarterData(time()));
+        }
 
         $q = $this->getRequestParameter('current_q');
-        if (empty($q)) {
+        if (is_null($q)) {
             $q = $this->getRequestParameter('quarter', $default);
         }
         $this->getUser()->setAttribute('current_q', $q, self::FILTER_Q_NAMESPACE);

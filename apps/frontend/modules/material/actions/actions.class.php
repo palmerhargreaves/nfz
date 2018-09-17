@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class materialActions extends sfActions
+class materialActions extends BaseActivityActions
 {
 
     /**
@@ -21,6 +21,8 @@ class materialActions extends sfActions
         $this->activity = ActivityTable::getInstance()->find($request->getParameter('activity'));
         $this->forward404Unless($this->activity);
 
+        $this->outputFilterByYear();
+        $this->outputFilterByQuarter();
 
         $builder = new MaterialsListBuilder($this->activity);
         $builder->build($this->getUser()->getAuthUser());

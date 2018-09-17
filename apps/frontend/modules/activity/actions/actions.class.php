@@ -27,6 +27,9 @@ class activityActions extends BaseActivityActions
             $this->outputFilterByQuarter();
 
             $this->redirect(url_for('@agreement_module_models?activity=' . $request->getParameter('activity')));
+        } else {
+            $this->outputFilterByYear();
+            $this->outputFilterByQuarter();
         }
 
         $this->activity->markAsViewed($this->getUser()->getAuthUser());

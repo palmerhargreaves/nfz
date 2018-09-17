@@ -309,7 +309,7 @@ class Activity extends BaseActivity
             //Проверяем на дополнительный параметр
             if (!empty($params)) {
                 //Принудительная проверка выполнения активности за квартал
-                if (isset($params[ 'check_by_quarter' ])) {
+                if (isset($params[ 'check_by_quarter' ]) && !is_null($by_quarter)) {
                     $query->andWhere('ignore_q' . $by_quarter . '_statistic = ?', 0);
                     $query->andWhere('q' . $by_quarter . '= ? ', $by_quarter);
                 }
