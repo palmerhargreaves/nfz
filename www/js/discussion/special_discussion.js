@@ -17,9 +17,12 @@ utils.extend(SpecialDiscussion, Discussion, {
         this.getSpecialMessagesPanel().on('click', '.special-discussion-button-submit-read', $.proxy(this.onSubmitSpecialMessageAsRead, this));
         this.getSpecialMessagesPanel().on('click', '.special-discussion-button-close', $.proxy(this.onCloseButton, this));
 
+        $(document).on('click', '#bt-special-message', $.proxy(this.sendMessage, this));
     },
 
-    sendMessage: function () {
+    sendMessage: function (event) {
+        event.preventDefault();
+
         var $self = this;
 
         this.posting = true;
@@ -47,6 +50,10 @@ utils.extend(SpecialDiscussion, Discussion, {
 
     deleteSentFiles: function() {
         $('.model-form-selected-files-to-upload').html('');
+
+        if (this.discussion_file_uploader != null) {
+            this.discussion_file_uploader.reset();
+        }
     },
 
     getPostForm: function () {
@@ -177,7 +184,7 @@ utils.extend(SpecialDiscussion, Discussion, {
     },
 
     getSpecialMessageText: function () {
-        return $('textarea[name=message]');
+        return $('textarea[name=message]', this.getPanel());
     },
 
     getScroller: function() {
@@ -186,7 +193,9 @@ utils.extend(SpecialDiscussion, Discussion, {
 
     getSubmitForm: function() {
         return $('#discussion_model_comments');
+    },
+
+    getCommentPostBt: function() {
+        return $('#bt-special-message');
     }
-
-
 });
