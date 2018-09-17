@@ -1,5 +1,5 @@
 <div class="activity">
-<?php include_partial('activity/activity_head', array('activity' => $activity)) ?>
+<?php include_partial('activity/activity_head', array('activity' => $activity, 'current_q' => $current_q, 'current_year' => $current_year)) ?>
 	<div class="content-wrapper">
 		<?php include_partial('activity/activity_tabs', array('activity' => $activity, 'active' => 'materials')) ?>
         <div class="pane-shadow"></div>

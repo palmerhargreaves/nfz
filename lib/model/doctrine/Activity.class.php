@@ -309,7 +309,7 @@ class Activity extends BaseActivity
             //Проверяем на дополнительный параметр
             if (!empty($params)) {
                 //Принудительная проверка выполнения активности за квартал
-                if (isset($params[ 'check_by_quarter' ])) {
+                if (isset($params[ 'check_by_quarter' ]) && !is_null($by_quarter)) {
                     $query->andWhere('ignore_q' . $by_quarter . '_statistic = ?', 0);
                     $query->andWhere('q' . $by_quarter . '= ? ', $by_quarter);
                 }
@@ -1447,5 +1447,9 @@ class Activity extends BaseActivity
         }
 
         return $completed_models_count;
+    }
+
+    public function isActivityStatisticHasSteps() {
+        return ActivityExtendedStatisticFieldsTable::getInstance()->createQuery()->where('activity_id = ? and step_id != ?', array($this->getId(), 0))->count();
     }
 }

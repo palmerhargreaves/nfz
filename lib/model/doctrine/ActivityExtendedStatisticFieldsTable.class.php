@@ -17,7 +17,14 @@ class ActivityExtendedStatisticFieldsTable extends Doctrine_Table
         return Doctrine_Core::getTable('ActivityExtendedStatisticFields');
     }
 
-    public static function getConceptInfoByUserActivity($user) {
+    /**
+     * @param $user
+     * @param null $activity
+     * @param int $current_year
+     * @param int $current_q
+     * @return null|string
+     */
+    public static function getConceptInfoByUserActivity($user, $activity = null, $current_year = 0, $current_q = 0) {
         $user = $user->getAuthUser();
 
         $userDealer = $user->getDealerUsers()->getFirst();
@@ -28,10 +35,23 @@ class ActivityExtendedStatisticFieldsTable extends Doctrine_Table
         if(!$dealer)
             return '';
 
-        //$field = ActivityExtendedStatisticFieldsDataTable::getInstance()->createQuery()->where('field_id = ? and user_id = ? and dealer_id = ?', array($this->getId(), $user->getId(), $dealer->getId()))->fetchOne();
-        $concept = ActivityExtendedStatisticFieldsDataTable::getInstance()->createQuery()->where('dealer_id = ?', array($dealer->getId()))->groupBy('concept_id')->execute();
-        if($concept && $concept->count() > 0)
-            return $concept->getFirst();
+        $query = ActivityExtendedStatisticFieldsDataTable::getInstance()->createQuery()->where('dealer_id = ?', array($dealer->getId()))->groupBy('concept_id');
+        if (!is_null($activity)) {
+            $query->andWhere('activity_id = ?', $activity->getId());
+        }
+
+        if ($current_year != 0) {
+            $query->andWhere('year = ?', $current_year);
+        }
+
+        if ($current_q != 0) {
+            $query->andWhere('quarter = ?', $current_q);
+        }
+        $concepts = $query->execute();
+
+        if ($concepts && $concepts->count() > 0 && $concepts->getFirst()->getConceptId() != 0) {
+            return $concepts->getFirst()->getConceptId();
+        }
 
         return null;
     }

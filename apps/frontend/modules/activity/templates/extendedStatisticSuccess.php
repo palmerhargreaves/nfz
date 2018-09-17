@@ -53,13 +53,7 @@
                     <div id="materials" style="float: left; width: 99%;">
                         <div id="accommodation" class="active">
                             <?php
-                            $concept = null;
-                            $bindedConcept = ActivityExtendedStatisticFieldsTable::getConceptInfoByUserActivity($sf_user->getRawValue());
-
-                            if ($bindedConcept && !$concept)
-                                $concept = $bindedConcept->getConceptId();
-
-                            include_partial('extended_statistic_data', array('activity' => $activity, 'concept' => $concept));
+                                include_partial('extended_statistic_data', array('activity' => $activity, 'concept' => $concept));
                             ?>
                         </div>
                     </div>

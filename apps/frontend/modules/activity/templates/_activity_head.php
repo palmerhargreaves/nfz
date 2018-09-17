@@ -123,10 +123,10 @@ if (!$customDate) {
 
                             <li id="statistic-tab-<?php echo $q; ?>"
                                 class="<?php echo $selected_q == $q && $y_key == $current_year ? "active" : ""; ?>""
-                                data-activity-q="<?php echo $q; ?>"
-                                data-activity-year="<?php echo $y_key; ?>">
-                                <a href="<?php echo url_for('@agreement_module_models_q_with_year?activity=' . $activity->getId() . '&quarter=' . $q.'&current_year='.$y_key); ?>"><?php echo $y_key; ?>
-                                    г. <?php echo $roman[$q]; ?>-Квартал</a>
+                            data-activity-q="<?php echo $q; ?>"
+                            data-activity-year="<?php echo $y_key; ?>">
+                            <a href="<?php echo url_for('@agreement_module_models_q_with_year?activity=' . $activity->getId() . '&quarter=' . $q . '&current_year=' . $y_key); ?>"><?php echo $y_key; ?>
+                                г. <?php echo $roman[$q]; ?>-Квартал</a>
                             </li>
 
                         <?php endforeach;
@@ -170,6 +170,7 @@ if (!$customDate) {
         endforeach;
 
         $dealer = $sf_user->getAuthUser()->getDealer();
+
         //if ($activity->getActivityField()->count() > 0 && $dealer):
         if ($activity->isActivityStatisticActivatedInPeriod($current_year, $current_q)): ?>
             <div class="stage<?php echo isset($activities_task_statistics[$selected_q]) && $activities_task_statistics[$selected_q] ? ' active' : ''; ?>"
@@ -182,10 +183,9 @@ if (!$customDate) {
                 <?php include_partial('activity/activity_statistic_quarters', array('activity' => $activity)); ?>
             </div>
         <?php elseif ($activity->getAllowExtendedStatistic() && $dealer):
-            $res = $activity->checkForStatisticComplete($dealer->getId(), $current_q);
+            $is_activity_complete = $activity->isActivityStatisticComplete($dealer, null, false, $current_year, $current_q, array('check_by_quarter' => true));
             ?>
-            <div class="stage<?php echo $res ? ' active' : ''; ?>"
-                 style="<?php echo $sf_user->getAuthUser()->isSuperAdmin() ? "height: 85px;" : ""; ?>">
+            <div class="stage<?php echo $is_activity_complete ? ' active' : ''; ?>" style="<?php //echo $sf_user->getAuthUser()->isSuperAdmin() ? "height: 85px;" : ""; ?>">
                 <div style="width: 100%; float: left;">
                     Статистика
                 </div>
