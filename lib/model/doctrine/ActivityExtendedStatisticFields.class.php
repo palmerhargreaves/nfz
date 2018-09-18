@@ -125,7 +125,13 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
         return $field;
     }
 
-    public function calculateValue($user, $createdAt = '') {
+    /**
+     * @param $user
+     * @param string $createdAt
+     * @param int $conceptId
+     * @return float|int|string
+     */
+    public function calculateValue($user, $createdAt = '', $conceptId = 0) {
 		if(is_numeric($user)) {
             $dealerId = $user;
         }
@@ -133,7 +139,7 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
             $dealerId = $user->getAuthUser()->getDealer()->getId();
         }
 
-		//$calcFields = ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('field_id = ? and user_id = ?', array($this->getId(), $user->getId()))->orderBy('order ASC')->execute();
+        //$calcFields = ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('field_id = ? and user_id = ?', array($this->getId(), $user->getId()))->orderBy('order ASC')->execute();
 		$calcFields = ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('parent_field = ?', $this->getId())->orderBy('id ASC')->execute();
 
 		$values = array();
@@ -143,9 +149,9 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
 		{
 			$calcType = $field->getCalcType();
 
-            $checkField = ActivityExtendedStatisticFieldsTable::getInstance()->find($field->getCalcField());
+			$checkField = ActivityExtendedStatisticFieldsTable::getInstance()->find($field->getCalcField());
 			if($checkField && $checkField->getValueType() == self::FIELD_TYPE_CALC) {
-				$values[] = $checkField->calculateValue($user, $createdAt);
+				$values[] = $checkField->calculateValue($user, $createdAt, $conceptId);
 			}
 			else {
 				$query = ActivityExtendedStatisticFieldsDataTable::getInstance()
@@ -156,6 +162,10 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
                             $dealerId
                         )
                     );
+
+				if ($conceptId != 0) {
+				    $query->andWhere('concept_id = ?', $conceptId);
+                }
 
                 if(!empty($createdAt)) {
                     $query->andWhere('created_at LIKE ?', $createdAt.'%');
