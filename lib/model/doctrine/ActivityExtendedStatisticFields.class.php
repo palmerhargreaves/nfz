@@ -193,10 +193,10 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
         }
 
         if($calcType == self::FIELD_CALC_SYMBOL_PLUS) {
-            return isset($values[0]) ? $values[0] + $values[1] : '';
+            return $this->plusValues($values);
         }
 		else if($calcType == self::FIELD_CALC_SYMBOL_MINUS) {
-            return isset($values[0]) ? $values[0] - $values[1] : '';
+            return $this->minusValues($values);
         }
 		else if($calcType == self::FIELD_CALC_SYMBOL_DIVIDE) {
 			if($values[1] != 0) {
@@ -209,6 +209,40 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
 			return round($values[0] * $values[1] / 100, 2);
 		}
 	}
+
+    /**
+     * Сложение всех полей формулы
+     * @param $values
+     * @return int
+     */
+	private function plusValues($values) {
+        $result = 0;
+
+        if (!isset($values[0])) { return 0; }
+
+        foreach ($values as $value) {
+            $result += $value;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Вычитание всех полей формулы
+     * @param $values
+     * @return int
+     */
+    private function minusValues($values) {
+        $result = 0;
+
+        if (!isset($values[0])) { return 0; }
+
+        foreach ($values as $value) {
+            $result = $result == 0 ? $value : $result - $value;
+        }
+
+        return $result;
+    }
 
 	public function isCalcField() {
 		return ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('parent_field = ?', $this->getId())->orderBy('id ASC')->count() > 0 ? true : false;
