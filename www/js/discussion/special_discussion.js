@@ -1,4 +1,6 @@
 SpecialDiscussion = function (config) {
+    this.bt_send_message = '';
+
     SpecialDiscussion.superclass.constructor.call(this, config);
 
     this.userId = 0;
@@ -17,7 +19,7 @@ utils.extend(SpecialDiscussion, Discussion, {
         this.getSpecialMessagesPanel().on('click', '.special-discussion-button-submit-read', $.proxy(this.onSubmitSpecialMessageAsRead, this));
         this.getSpecialMessagesPanel().on('click', '.special-discussion-button-close', $.proxy(this.onCloseButton, this));
 
-        $(document).on('click', '#bt-special-message', $.proxy(this.sendMessage, this));
+        $(document).on('click', this.bt_send_message, $.proxy(this.sendMessage, this));
     },
 
     sendMessage: function (event) {
@@ -26,7 +28,6 @@ utils.extend(SpecialDiscussion, Discussion, {
         var $self = this;
 
         this.posting = true;
-
         this.saveFilesToSend();
         $.post($self.post_url, $.extend(this.getFilesParam(), {
                 id: $self.discussion_id,

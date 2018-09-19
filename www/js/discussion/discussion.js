@@ -411,8 +411,9 @@ Discussion.prototype = {
     onPost: function (event) {
         event.stopPropagation();
 
-        if (this.started)
+        if (this.started) {
             this.sendMessage(event);
+        }
 
         return false;
     },
