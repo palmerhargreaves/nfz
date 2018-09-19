@@ -176,7 +176,7 @@
 }
 
 .activity .stages-wrapper .stage.active {
-    background: url('../images/ok-icon-active.png') 12px 11px no-repeat;
+    background: url('../images/ok-icon-active.png') 18px 11px no-repeat;
     color: #000000;
 }
 

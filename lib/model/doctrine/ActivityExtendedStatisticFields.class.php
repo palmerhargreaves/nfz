@@ -125,7 +125,13 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
         return $field;
     }
 
-    public function calculateValue($user, $createdAt = '') {
+    /**
+     * @param $user
+     * @param string $createdAt
+     * @param int $conceptId
+     * @return float|int|string
+     */
+    public function calculateValue($user, $createdAt = '', $conceptId = 0) {
 		if(is_numeric($user)) {
             $dealerId = $user;
         }
@@ -133,7 +139,7 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
             $dealerId = $user->getAuthUser()->getDealer()->getId();
         }
 
-		//$calcFields = ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('field_id = ? and user_id = ?', array($this->getId(), $user->getId()))->orderBy('order ASC')->execute();
+        //$calcFields = ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('field_id = ? and user_id = ?', array($this->getId(), $user->getId()))->orderBy('order ASC')->execute();
 		$calcFields = ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('parent_field = ?', $this->getId())->orderBy('id ASC')->execute();
 
 		$values = array();
@@ -143,9 +149,9 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
 		{
 			$calcType = $field->getCalcType();
 
-            $checkField = ActivityExtendedStatisticFieldsTable::getInstance()->find($field->getCalcField());
+			$checkField = ActivityExtendedStatisticFieldsTable::getInstance()->find($field->getCalcField());
 			if($checkField && $checkField->getValueType() == self::FIELD_TYPE_CALC) {
-				$values[] = $checkField->calculateValue($user, $createdAt);
+				$values[] = $checkField->calculateValue($user, $createdAt, $conceptId);
 			}
 			else {
 				$query = ActivityExtendedStatisticFieldsDataTable::getInstance()
@@ -156,6 +162,10 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
                             $dealerId
                         )
                     );
+
+				if ($conceptId != 0) {
+				    $query->andWhere('concept_id = ?', $conceptId);
+                }
 
                 if(!empty($createdAt)) {
                     $query->andWhere('created_at LIKE ?', $createdAt.'%');
@@ -183,10 +193,10 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
         }
 
         if($calcType == self::FIELD_CALC_SYMBOL_PLUS) {
-            return isset($values[0]) ? $values[0] + $values[1] : '';
+            return $this->plusValues($values);
         }
 		else if($calcType == self::FIELD_CALC_SYMBOL_MINUS) {
-            return isset($values[0]) ? $values[0] - $values[1] : '';
+            return $this->minusValues($values);
         }
 		else if($calcType == self::FIELD_CALC_SYMBOL_DIVIDE) {
 			if($values[1] != 0) {
@@ -199,6 +209,40 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
 			return round($values[0] * $values[1] / 100, 2);
 		}
 	}
+
+    /**
+     * Сложение всех полей формулы
+     * @param $values
+     * @return int
+     */
+	private function plusValues($values) {
+        $result = 0;
+
+        if (!isset($values[0])) { return 0; }
+
+        foreach ($values as $value) {
+            $result += $value;
+        }
+
+        return $result;
+    }
+
+    /**
+     * Вычитание всех полей формулы
+     * @param $values
+     * @return int
+     */
+    private function minusValues($values) {
+        $result = 0;
+
+        if (!isset($values[0])) { return 0; }
+
+        foreach ($values as $value) {
+            $result = $result == 0 ? $value : $result - $value;
+        }
+
+        return $result;
+    }
 
 	public function isCalcField() {
 		return ActivityExtendedStatisticFieldsCalculatedTable::getInstance()->createQuery()->where('parent_field = ?', $this->getId())->orderBy('id ASC')->count() > 0 ? true : false;
