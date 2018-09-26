@@ -268,8 +268,10 @@
 
                     <?php if ($activity->getAllowCertificate() && $sf_user->getAuthUser()->getDealerUsers()->count() > 0):
                         $activityConcepts = AgreementModelDatesTable::getInstance()
-                            ->createQuery()
+                            ->createQuery('md')
+                            ->innerJoin('md.Model c')
                             ->where('activity_id = ?', $activity->getId())
+                            ->andWhere('c.status = ?', array('accepted'))
                             ->andWhere('dealer_id = ?', $sf_user->getAuthUser()->getDealerUsers()->getFirst()->getDealerId())
                             ->execute();
 
