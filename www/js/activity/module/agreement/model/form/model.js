@@ -623,8 +623,8 @@ utils.extend(AgreementModelForm, AgreementModelBaseForm, {
 
         $(':input', this.getForm()).not('input[name=model_file]').data('skip-validate', 'true');
 
-        if (values && (values.status == 'wait' || values.status == 'accepted'))
-            this.getConceptAddFileLink().hide();
+        /*if (values && (values.status == 'wait' || values.status == 'accepted'))
+            this.getConceptAddFileLink().hide();*/
     },
 
     _switchToModelMode: function () {

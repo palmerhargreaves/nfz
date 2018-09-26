@@ -24,37 +24,61 @@
 </fieldset>
 
 <fieldset class="mod-popup-r">
-    <div class="mod-popup-comment">
-        <form id="discussion_model_comments" action="<?php echo url_for('@discussion_post') ?>" target="agreement-model-comments-frame" method="post" enctype="multipart/form-data"
-              class="post ">
-            <textarea name="message" rows="8" placeholder="Текст сообщения"></textarea>
+    <div class="mod-popup-comment panel-chat-message" style="margin-left: 1px;">
+        <form id="discussion_chat_upload_form" name="discussion_chat_upload_form" action="<?php echo url_for('@discussion_post') ?>"
+              enctype="multipart/form-data" method="post" class="post">
+            <input type="hidden" name="<?php echo session_name(); ?>" value="<?php echo session_id(); ?>">
+            <input type="hidden" name="upload_file_object_type" value=""/>
+            <input type="hidden" name="upload_file_type" value=""/>
+            <input type="hidden" name="upload_field" value=""/>
+            <input type="hidden" name="upload_files_discussion_agreement_ids" value=""/>
 
-            <div class="mod-popup-buttons" style="min-height: 30px;">
-                <input type="hidden" name="response_form_name" />
-                <input type="hidden" name="id" id="model_id"/>
-                <input type="submit" class="message-button" value="Отправить" title="Ctrl+Enter">
+            <div class="textarea-wrapper" style="margin-bottom: 10px; height: 140px; ">
+                <textarea name="message" style="height: 130px;"></textarea>
             </div>
 
-            <div class="model-form-selected-files-to-upload" style="margin-top: 10px;"></div>
+            <div class="model-form-selected-files-to-upload"></div>
 
-            <?php if (!isset($disable_upload) || !$disable_upload): ?>
-                <div class="message-upload-wrapper message-upload">
-                    <div class="message-upload-button">
-                        <div>
-                            <input type="file" data-name="comments_files" id="comments_files" name="comments_files[]"
-                                   multiple data-container-cls="model-form-selected-files-to-upload"
-                                   style="height: 40px; width: 40px; opacity: 0; cursor: pointer;">
+            <div class="message-upload-wrapper message-upload">
+                <div class="file">
+                    <div class="modal-file-wrapper input">
+                        <div id="discussion-files-progress-bar"
+                             class="progress-bar-content progress-bar-full-width"></div>
+                    </div>
+                </div>
+
+                <div class="file" style="min-height: 1px;">
+                    <div class="modal-file-wrapper input">
+                        <div class="d-popup-files-wrap scrollbar-inner">
+                            <div class="d-popup-files-row">
+                                <div id="discussion_files"
+                                     class="d-popup-uploaded-files d-cb" style="padding: 0px; min-height: 1px;"></div>
+                            </div>
+                        </div>
+
+                        <div id="container_discussion_files" class="control dropzone"
+                             style="min-height: 0px; height: 0px !important; border: none !important; padding: 1px;">
+                            <input type="file" id="discussion_comment_file" name="discussion_comment_file"
+                                   style="height: 0px;" multiple>
                         </div>
                     </div>
-                    <div class="files"></div>
-                    <div class="clear"></div>
                 </div>
-            <?php else: ?>
-                <div class="message-upload-wrapper">
-                </div>
-            <?php endif; ?>
-        </form>
+                <div class="files"></div>
+                <div class="clear"></div>
+            </div>
 
+            <div class="mod-popup-buttons" style="min-height: 30px; float: left; margin-left: 10px; width: 95%;">
+                <input type="hidden" name="response_form_name" value="discussion_chat_upload_form"/>
+                <input type="hidden" name="model_id" id="model_id"/>
+                <input type="hidden" name="id" id="id"/>
+
+                <input id="bt-post-chat-message" type="submit" class="message-button " style="margin-top: 10px; margin-bottom: 5px; float: right; width: 136px;" value="Отправить" title="Ctrl+Enter">
+
+                <div class="message-button-wrapper btn-add-file" id="btn-add-discussion-dealer-files" style="margin-top: 5px;">
+                    <div style="margin-top: 1px; margin-bottom: 5px; width: 145px !important; " class="gray button">Добавить файл</div>
+                </div>
+            </div>
+        </form>
     </div>
 </fieldset>
 

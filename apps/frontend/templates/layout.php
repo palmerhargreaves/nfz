@@ -20,12 +20,31 @@
                     previous_url: "<?php echo url_for('@discussion_previous') ?>",
                     search_url: "<?php echo url_for('@discussion_search') ?>",
                     online_check_url: "<?php echo url_for('@discussion_online_check') ?>",
+                    bt_send_message: '#bt-post-chat-message',
                     uploader: new Uploader({
                         selector: '#chat-modal .message-upload',
                         session_name: '<?php echo session_name() ?>',
                         session_id: '<?php echo session_id() ?>',
                         upload_url: '/upload.php',
                         delete_url: "<?php echo url_for('@upload_temp_delete') ?>"
+                    }).start(),
+                    discussion_file_uploader: new JQueryUploader({
+                        file_uploader_el: '#discussion_comment_file',
+                        max_file_size: '<?php echo sfConfig::get('app_max_upload_size'); ?>',
+                        uploader_url: '<?php echo '/upload_ajax.php'; ?>',
+                        delete_temp_file_url: '<?php echo url_for('@upload_temp_ajax_delete'); ?>',
+                        delete_uploaded_file_url: '<?php echo url_for('@agreement_model_delete_uploaded_file'); ?>',
+                        uploaded_files_container: '#discussion_files',
+                        el_attach_files_model_field: '#discussion_comment_file',
+                        progress_bar: '#discussion-files-progress-bar',
+                        upload_files_ids_el: 'upload_files_discussion_ids',
+                        upload_file_object_type: 'discussion',
+                        upload_file_type: 'discussion',
+                        upload_field: 'discussion_comment_file',
+                        draw_only_labels: true,
+                        el_attach_files_click_bt: '#btn-add-discussion-dealer-files',
+                        disabled_files_extensions: ['js'],
+                        model_form: '#discussion_chat_upload_form'
                     }).start()
                 }).start();
 
@@ -79,7 +98,7 @@
     </div>
 </div>
 
-<?php if ($sf_user->isDealerUser() || $sf_user->isManager()): ?>
+<?php if ($sf_user->isDealerUser() || $sf_user->isManager() || Utils::allowedIps()): ?>
     <div id="chat-modal" style="width:640px;"
          class="chat wide modal"<?php if ($sf_user->isDealerUser() && $sf_user->getAuthUser()->getDealerDiscussion()) echo ' data-dealer-discussion="' . $sf_user->getAuthUser()->getDealerDiscussion()->getId() . '"'; ?><?php if ($sf_user->isManager()) echo ' data-manager-discussion="yes"'; ?>>
         <div class="white modal-header">Задать вопрос
@@ -174,7 +193,7 @@ if ($sf_user->getAuthUser()->isSuperAdmin()) {
                     <li><a href="<?php echo url_for('@agreement_module_model_activities') ?>">Мои заявки</a></li>
                 <?php endif; ?>
 
-                <?php if (getenv('REMOTE_ADDR') == '46.175.166.61'): ?>
+                <?php if (Utils::allowedIps()): ?>
                     <a href="javascript:;" id="begin-chat">
                         <div
                                 class="ico<?php if (DealerDiscussionTable::getInstance()->countUnread($sf_user->getRawValue()->getAuthUser()) > 0) echo ' new' ?>"></div>

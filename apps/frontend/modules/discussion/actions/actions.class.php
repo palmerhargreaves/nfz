@@ -68,9 +68,6 @@ class discussionActions extends ActionsWithJsonForm
             return sfView::NONE;*/
 
         $files = $request->getParameter('files');
-        var_dump($files);
-        exit;
-
         if ((!$files || !is_array($files)) && empty($text)) {
             return sfView::NONE;
         }
