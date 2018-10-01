@@ -29,7 +29,11 @@ class ActivityBudgetPointsStatusesFactory extends ActivityStatusesFactory {
      */
     public function getStatus($user, Activity $activity, $by_year = null, $by_quarter = null, $consider_activity_quarter = false, $limit_activity = true)
     {
-        $this->activity_status = new ActivityBudgetPointsStatuses($user, $activity, $by_year, $by_quarter, $consider_activity_quarter, $limit_activity);
+        if ($activity->getAllowExtendedStatistic() && ActivityExtendedStatisticFieldsTable::getInstance()->createQuery()->where('activity_id = ?', $activity->getId())->count() > 0) {
+            $this->activity_status = new ActivityBudgetPointsExtendedStatisticStatuses($user, $activity, $by_year, $by_quarter, $consider_activity_quarter, $limit_activity);
+        } else {
+            $this->activity_status = new ActivityBudgetPointsStatuses($user, $activity, $by_year, $by_quarter, $consider_activity_quarter, $limit_activity);
+        }
 
         return $this->activity_status->getStatus();
     }

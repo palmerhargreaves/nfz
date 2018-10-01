@@ -116,7 +116,11 @@ ActivityExtendedStepsStatistic.prototype = {
                 v1 = !isNaN(parseFloat($('.field-' + fields[0]).val())) ? parseFloat($('.field-' + fields[0]).val()) : 0,
                 v2 = !isNaN(parseFloat($('.field-' + fields[1]).val())) ? parseFloat($('.field-' + fields[1]).val()) : 0;
 
-            this.calcData($f, symbol, v1, v2);
+            if (this.isPlusMinus(symbol)) {
+                this.calcPlusMinus($f, symbol, fields);
+            } else {
+                this.calcData($f, symbol, v1, v2);
+            }
         }
 
         var parentField = $f.data('calc-parent-field') != 0 ? $f.data('calc-parent-field') : el.data('calc-parent-field');
@@ -127,10 +131,14 @@ ActivityExtendedStepsStatistic.prototype = {
             if ($p.data('calc-fields') != undefined) {
                 pFields = $p.data('calc-fields').split(':');
 
-                var v1 = this.getFieldVal(pFields[0]),
-                    v2 = this.getFieldVal(pFields[1]);
+                if (this.isPlusMinus(symbol)) {
+                    this.calcPlusMinus($f, symbol, fields);
+                } else {
+                    var v1 = this.getFieldVal(pFields[0]),
+                        v2 = this.getFieldVal(pFields[1]);
 
-                this.calcData($p, symbol, v1, v2);
+                    this.calcData($p, symbol, v1, v2);
+                }
             }
         }
     },
@@ -149,6 +157,24 @@ ActivityExtendedStepsStatistic.prototype = {
         }
     },
 
+    calcPlusMinus: function($f, symbol, fields) {
+        var values = [], result = 0;
+
+        $.each(fields, function(i, field_index) {
+            values.push(!isNaN(parseFloat($('.field-' + field_index).val())) ? parseFloat($('.field-' + field_index).val()) : 0);
+        });
+
+        $.each(values, function(i, value) {
+            if (symbol == 'plus') {
+                result += value;
+            } else {
+                result = result == 0 ? value : result - value;
+            }
+        });
+
+        $f.text(result.toFixed(2));
+    },
+
     calcData: function ($f, symbol, v1, v2) {
         if (symbol == 'plus') {
             $f.text(v1 + v2);
@@ -161,7 +187,7 @@ ActivityExtendedStepsStatistic.prototype = {
                 $f.text((v1 / v2).toFixed(2));
         }
         else if (symbol == 'percent') {
-            $f.text((v1 *100 /  v2).toFixed(2));
+            $f.text((v1 * 100 / v2).toFixed(2));
         }
     },
 
@@ -422,5 +448,9 @@ ActivityExtendedStepsStatistic.prototype = {
 
     getStepId: function () {
         return $('input[name=step_id]', this.getForm());
+    },
+
+    isPlusMinus: function(symbol) {
+        return symbol == 'plus' || symbol == 'minus';
     }
 }

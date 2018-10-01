@@ -108,6 +108,7 @@ class ActivitiesBudgetByControlPoints
                         $work_status = $work_status_result['status'];
                         $work_status_msg = $work_status_result['msg'];
 
+
                         if ($status != ActivityModuleDescriptor::STATUS_NONE) {
                             //var_dump($q.'--'.$status.'--'.$activity->getId());
                             $this->_quarters_statistics[ $q ][ 'mandatory_activities' ][ 'completed' ] = $this->_quarters_statistics[ $q ][ 'mandatory_activities' ][ 'completed' ] && $status == ActivityModuleDescriptor::STATUS_ACCEPTED;

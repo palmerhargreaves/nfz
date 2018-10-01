@@ -1267,6 +1267,7 @@ class Activity extends BaseActivity
         }
 
         $activity_status = ActivityStatusesFactory::getInstance()->getStatus($user, $this, $by_year, $quarter, true, $limit_activity);
+
         if ($activity_status != ActivityModuleDescriptor::STATUS_NONE) {
             return $activity_status;
         }
