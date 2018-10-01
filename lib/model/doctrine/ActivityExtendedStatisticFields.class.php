@@ -206,7 +206,7 @@ class ActivityExtendedStatisticFields extends BaseActivityExtendedStatisticField
 			return 0;
 		}
 		else if($calcType == self::FIELD_CALC_SYMBOL_PERCENT) {
-			return round($values[0] * $values[1] / 100, 2);
+			return round($values[0] * 100 / $values[1], 2);
 		}
 	}
 

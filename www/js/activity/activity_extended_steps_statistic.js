@@ -161,7 +161,7 @@ ActivityExtendedStepsStatistic.prototype = {
                 $f.text((v1 / v2).toFixed(2));
         }
         else if (symbol == 'percent') {
-            $f.text((v1 * v2 / 100).toFixed(2));
+            $f.text((v1 *100 /  v2).toFixed(2));
         }
     },
 
