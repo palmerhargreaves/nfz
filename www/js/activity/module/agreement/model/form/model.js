@@ -407,7 +407,8 @@ utils.extend(AgreementModelForm, AgreementModelBaseForm, {
         $.post(this.load_concept_cert_fields_url, {}, function (result) {
             self.getConceptDatesPeriodAction().empty().html(result);
 
-            $('input.dates-field').datepicker({dateFormat: "dd.mm.yy"});
+            //$('input.dates-field').datepicker({dateFormat: "dd.mm.yy"});
+            window.concept_dates_limit = new ActivityConceptDateLimit({}).start();
         });
     },
 

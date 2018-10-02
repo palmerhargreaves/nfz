@@ -1585,4 +1585,30 @@ class agreement_activity_modelActions extends BaseActivityActions
 
         return array();
     }
+
+    /**
+     * Проверка на наличе даты в календаре
+     * @param sfWebRequest $request
+     * @return string
+     */
+    public function executeCheckDateInCalendar(sfWebRequest $request) {
+        $dates = CalendarTable::getCalendarDates();
+
+        $result_dates = array();
+        foreach ($dates as $date) {
+            $elapsed_days = Utils::getElapsedTime(strtotime($date['end_date']) - strtotime($date['start_date']));
+            $result_dates[] = date('Y-n-j', strtotime($date['start_date']));
+
+            if ($elapsed_days > 0) {
+                for ($inc_day = 1; $inc_day <= $elapsed_days; $inc_day++) {
+                    $result_dates[] = date('Y-n-j', strtotime('+'.$inc_day.' days', strtotime($date['start_date'])));
+                }
+            } else {
+                $result_dates[] = date('Y-n-j', strtotime($date['end_date']));
+            }
+
+        }
+
+        return $this->sendJson(array('dates' => $result_dates));
+    }
 }

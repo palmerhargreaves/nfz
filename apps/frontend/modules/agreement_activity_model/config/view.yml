@@ -3,3 +3,4 @@ all:
   javascripts: 
     - intro/intro.activity.approvement.js
     - utils/utils.js
+    - activity/concept/date_limit.js
