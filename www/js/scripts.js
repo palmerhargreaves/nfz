@@ -1,6 +1,8 @@
 $(document).ready(function () {
     var opened;
 
+    window.dates_in_calendar = [];
+
     $('#user-menu').click(function () {
         //$(this).toggleClass('open');
         $(this).find(".items").slideToggle();
@@ -174,7 +176,6 @@ $(document).ready(function () {
         } else {
             $('.' + parentCls).empty();
 
-            console.log($(this).data('name'));
             if (window.agreement_model_report_form != undefined && (parentCls == 'report-form-selected-additional-files-to-upload' || parentCls == 'report-form-selected-financial-files-to-upload')) {
                 if (window.agreement_model_report_form.getAdditionalFilesToUploadWithPlaces() != undefined && window.agreement_model_report_form.getAdditionalFilesToUploadWithPlaces().data('places-to-upload-orig') != 0 && parentCls == 'report-form-selected-additional-files-to-upload') {
                     if (files.length >= window.agreement_model_report_form.getAdditionalFilesToUploadWithPlaces().data('places-to-upload') ) {
@@ -254,8 +255,23 @@ $(document).ready(function () {
                 changeBt = $("div.change-period-model-type-" + modelType.val());
 
             if (modelType.length != 0) {
+                getCalendarDates();
+
                 if (modelType.data('is-sys-admin') && changeBt != undefined && changeBt.data('action') == 'apply')
                     return [true];
+
+                var allow_date = true, check_date = '';
+
+                check_date = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                window.dates_in_calendar.forEach(function(el) {
+                    if (el == check_date) {
+                        allow_date = false;
+                    }
+                });
+
+                if (!allow_date) {
+                    return [false];
+                }
 
                 var today = new Date().getTime() + (2 * 86400000),
                     tmp = new Date(today);
@@ -421,4 +437,16 @@ function addShakeAnim (cls, form) {
     setTimeout(function() {
         $(cls, form).removeClass('shake-container');
     }, 500);
+}
+
+//Проверка даты в календаре
+function getCalendarDates() {
+    if (window.dates_in_calendar.length == 0) {
+        $.ajax('/agreement/model/check/date/in/calendar', {
+            async: false,
+            success: function(result) {
+                window.dates_in_calendar = result.dates;
+            }
+        });
+    }
 }
