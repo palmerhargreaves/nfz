@@ -139,6 +139,8 @@ class models_datesActions extends sfActions
                 ->andWhereIn('m.id', $modelsIds);
             $models = $query->execute();
             foreach ($models as $model) {
+                $updated = $model->getUpdatedAt();
+
                 if ($this->activity != -1) {
                     $model->setActivityId($this->activity);
                 }
@@ -161,9 +163,37 @@ class models_datesActions extends sfActions
                         ->limit(1)
                         ->fetchOne();
                     if ($entry) {
+                        $updated = $entry->getCreatedAt();
+
                         $entry->setCreatedAt($date);
                         $entry->save();
                     }
+
+                    $msg[] = sprintf(
+                        "<strong>Перенос заявки по дате:</strong> <br/> Дата до: %s <br /> Дата после: %s <br/> Дата изменений: %s",
+                        sprintf('%s', $updated),
+                        sprintf('%s', $date),
+                        date('d-m-Y H:i:s')
+                    );
+                }
+
+                if (!empty($msg)) {
+                    $new_entry = new LogEntry();
+                    $new_entry->setArray(
+                        array
+                        (
+                            'user_id' => $this->getUser()->getAuthUser()->getId(),
+                            'description' => implode('<br/>', $msg),
+                            'object_id' => $model->getId(),
+                            'module_id' => 1,
+                            'action' => 'model_move_to_activity_date',
+                            'object_type' => $entry ? $entry->getObjectType() : 'agreement_model',
+                            'login' => $this->getUser()->getAuthUser()->getEmail(),
+                            'dealer_id' => $model->getDealerId(),
+                            'title' => 'Перенос заявки',
+                        )
+                    );
+                    $new_entry->save();
                 }
 
                 $this->success = true;
